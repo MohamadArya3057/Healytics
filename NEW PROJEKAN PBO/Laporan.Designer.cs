@@ -1,6 +1,6 @@
 ﻿namespace NEW_PROJEKAN_PBO
 {
-    partial class Awal
+    partial class Laporan
     {
         /// <summary>
         /// Required designer variable.
@@ -28,38 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button1 = new Button();
             SuspendLayout();
             // 
-            // button1
-            // 
-            button1.BackColor = Color.Transparent;
-            button1.FlatAppearance.BorderSize = 0;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Bahnschrift Condensed", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.ForeColor = Color.White;
-            button1.Location = new Point(657, 564);
-            button1.Name = "button1";
-            button1.Size = new Size(138, 64);
-            button1.TabIndex = 0;
-            button1.Text = "LOGIN";
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click;
-            // 
-            // Awal
+            // Laporan
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackgroundImage = Properties.Resources.Desktop___7__2___1_;
-            ClientSize = new Size(1484, 1061);
-            Controls.Add(button1);
-            Name = "Awal";
-            Text = "Awal";
+            ClientSize = new Size(1670, 1000);
+            FormBorderStyle = FormBorderStyle.None;
+            Name = "Laporan";
+            Text = "Laporan";
+            Load += laporanForm_load;
             ResumeLayout(false);
         }
 
         #endregion
-
-        private Button button1;
     }
 }
