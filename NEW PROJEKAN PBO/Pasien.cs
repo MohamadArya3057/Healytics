@@ -185,5 +185,16 @@ namespace NEW_PROJEKAN_PBO
         {
             laporan = null;
         }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            var confirm = MessageBox.Show("Yakin ingin logout?", "Konfirmasi Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (confirm == DialogResult.Yes)
+            {
+                this.Hide(); 
+                Awal awal = new Awal();
+                awal.Show(); 
+            }
+        }
     }
 }

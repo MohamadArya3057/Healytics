@@ -22,7 +22,6 @@ namespace NEW_PROJEKAN_PBO
             Login login = new Login();
             this.Hide(); 
             login.ShowDialog();
-            this.Close();
         }
     }
 }

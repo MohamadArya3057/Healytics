@@ -128,6 +128,16 @@
   <metadata name="backgroundWorker1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="btnLogout.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
+        DAAACwwBP0AiyAAAAPFJREFUSEvtl8EJAjEQRZ8I6sWLNw8W4MWL/ahNaCtqFYqgNmMFgragfHAhjMni
+        Ymb3oA/mMgn/BcKyGYAFcAcemUuZc0rQhiUwzVyrV3YSnU4bc6NMZSf5i3MxBK62GeIlFhPbCPES94GW
+        bYZ4iffADujYhQIv8Qi4AEegaxeFl1iUyj3FopCfrNxbLKLyOsQilPfU+EQ8BjbA9svSXct3UOin4nUk
+        qGpVFufg7Z7rEEc/K29xVCo8xUmp8BKXSoWX+NzUT2IAtG0zxEssGnkINPb0Uaayk/yeWGOGxg1tzFnK
+        vFlZiAYrj6FN0pmVFTwBHqaQrBuDhzUAAAAASUVORK5CYII=
+</value>
+  </data>
   <data name="button2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
@@ -193,16 +203,6 @@
         6Id8c4v4AGyzyi3iPVDPKreIr8ASWAF365pbxL6Qsb4mjbgBjGNCvvhcxT6kbyVO5K/Fc+AGTNyKT4QQ
         mwgh7ulxmdsG4uNna1yYWKZ2Bow0L0wsQumz1rycYjkG5X8VChVLm4uWg4p9l72utstN7As5/IXg4qQL
         fU3bSXmg5abm0UOZdq7y8gTVm5sX6gRoQwAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="button5.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DAAACwwBP0AiyAAAAPFJREFUSEvtl8EJAjEQRZ8I6sWLNw8W4MWL/ahNaCtqFYqgNmMFgragfHAhjMni
-        Ymb3oA/mMgn/BcKyGYAFcAcemUuZc0rQhiUwzVyrV3YSnU4bc6NMZSf5i3MxBK62GeIlFhPbCPES94GW
-        bYZ4iffADujYhQIv8Qi4AEegaxeFl1iUyj3FopCfrNxbLKLyOsQilPfU+EQ8BjbA9svSXct3UOin4nUk
-        qGpVFufg7Z7rEEc/K29xVCo8xUmp8BKXSoWX+NzUT2IAtG0zxEssGnkINPb0Uaayk/yeWGOGxg1tzFnK
-        vFlZiAYrj6FN0pmVFTwBHqaQrBuDhzUAAAAASUVORK5CYII=
 </value>
   </data>
   <metadata name="sidebarTransisi.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">

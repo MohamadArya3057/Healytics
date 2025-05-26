@@ -47,7 +47,7 @@
             pnLaporan = new Panel();
             button4 = new Button();
             pnLogout = new Panel();
-            button5 = new Button();
+            btnLogout = new Button();
             sidebarTransisi = new System.Windows.Forms.Timer(components);
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)buttonMenu).BeginInit();
@@ -265,27 +265,28 @@
             // 
             pnLogout.BackColor = Color.Black;
             pnLogout.BackgroundImage = Properties.Resources.Screenshot_2025_05_25_141132;
-            pnLogout.Controls.Add(button5);
+            pnLogout.Controls.Add(btnLogout);
             pnLogout.Location = new Point(3, 393);
             pnLogout.Name = "pnLogout";
             pnLogout.Size = new Size(239, 72);
             pnLogout.TabIndex = 10;
             // 
-            // button5
+            // btnLogout
             // 
-            button5.BackColor = Color.Transparent;
-            button5.FlatAppearance.BorderSize = 0;
-            button5.FlatStyle = FlatStyle.Flat;
-            button5.Font = new Font("Bahnschrift Condensed", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button5.Image = (Image)resources.GetObject("button5.Image");
-            button5.ImageAlign = ContentAlignment.MiddleLeft;
-            button5.Location = new Point(0, 0);
-            button5.Name = "button5";
-            button5.Size = new Size(225, 72);
-            button5.TabIndex = 3;
-            button5.Text = "            Logout";
-            button5.TextAlign = ContentAlignment.MiddleLeft;
-            button5.UseVisualStyleBackColor = false;
+            btnLogout.BackColor = Color.Transparent;
+            btnLogout.FlatAppearance.BorderSize = 0;
+            btnLogout.FlatStyle = FlatStyle.Flat;
+            btnLogout.Font = new Font("Bahnschrift Condensed", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnLogout.Image = (Image)resources.GetObject("btnLogout.Image");
+            btnLogout.ImageAlign = ContentAlignment.MiddleLeft;
+            btnLogout.Location = new Point(0, 0);
+            btnLogout.Name = "btnLogout";
+            btnLogout.Size = new Size(225, 72);
+            btnLogout.TabIndex = 3;
+            btnLogout.Text = "            Logout";
+            btnLogout.TextAlign = ContentAlignment.MiddleLeft;
+            btnLogout.UseVisualStyleBackColor = false;
+            btnLogout.Click += btnLogout_Click;
             // 
             // sidebarTransisi
             // 
@@ -333,7 +334,7 @@
         private Panel pnLaporan;
         private Button button4;
         private Panel pnLogout;
-        private Button button5;
+        private Button btnLogout;
         private Panel pnTransaksi;
         private Button button6;
         private System.Windows.Forms.Timer sidebarTransisi;
