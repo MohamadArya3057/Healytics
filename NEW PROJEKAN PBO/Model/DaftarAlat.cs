@@ -8,8 +8,9 @@ namespace NEW_PROJEKAN_PBO.Model
 {
     public class DaftarAlat
     {
-        public int Id { get; set; }
-        public string Nama { get; set; }
+        public int Id_alat { get; set; }
+        public string Nama_alat { get; set; }
         public int Stock { get; set; }
     }
+
 }

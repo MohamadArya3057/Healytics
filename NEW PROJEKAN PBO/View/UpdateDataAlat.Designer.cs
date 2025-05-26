@@ -1,6 +1,6 @@
-﻿namespace NEW_PROJEKAN_PBO
+﻿namespace NEW_PROJEKAN_PBO.View
 {
-    partial class Alat
+    partial class UpdateDataAlat
     {
         /// <summary>
         /// Required designer variable.
@@ -28,71 +28,55 @@
         /// </summary>
         private void InitializeComponent()
         {
+            btnSimpan = new Button();
             textNama = new TextBox();
             numStock = new NumericUpDown();
-            dgvAlat = new DataGridView();
-            btnTambah = new Button();
             ((System.ComponentModel.ISupportInitialize)numStock).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dgvAlat).BeginInit();
             SuspendLayout();
+            // 
+            // btnSimpan
+            // 
+            btnSimpan.Location = new Point(324, 270);
+            btnSimpan.Name = "btnSimpan";
+            btnSimpan.Size = new Size(75, 23);
+            btnSimpan.TabIndex = 0;
+            btnSimpan.Text = "Simpan";
+            btnSimpan.UseVisualStyleBackColor = true;
+            btnSimpan.Click += btnSimpan_Click;
             // 
             // textNama
             // 
-            textNama.Location = new Point(581, 217);
+            textNama.Location = new Point(262, 181);
             textNama.Name = "textNama";
-            textNama.Size = new Size(100, 23);
-            textNama.TabIndex = 0;
+            textNama.Size = new Size(174, 23);
+            textNama.TabIndex = 1;
             // 
             // numStock
             // 
-            numStock.Location = new Point(619, 280);
+            numStock.Location = new Point(442, 181);
             numStock.Name = "numStock";
             numStock.Size = new Size(120, 23);
             numStock.TabIndex = 2;
             // 
-            // dgvAlat
-            // 
-            dgvAlat.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvAlat.Location = new Point(831, 163);
-            dgvAlat.Name = "dgvAlat";
-            dgvAlat.Size = new Size(617, 460);
-            dgvAlat.TabIndex = 3;
-            dgvAlat.CellContentClick += dgvAlat_CellContentClick;
-            // 
-            // btnTambah
-            // 
-            btnTambah.Location = new Point(251, 163);
-            btnTambah.Name = "btnTambah";
-            btnTambah.Size = new Size(75, 23);
-            btnTambah.TabIndex = 4;
-            btnTambah.Text = "Tambah";
-            btnTambah.UseVisualStyleBackColor = true;
-            btnTambah.Click += btnTambah_Click;
-            // 
-            // Alat
+            // UpdateDataAlat
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.Control;
-            ClientSize = new Size(1670, 1000);
-            Controls.Add(btnTambah);
-            Controls.Add(dgvAlat);
+            ClientSize = new Size(800, 450);
             Controls.Add(numStock);
             Controls.Add(textNama);
-            FormBorderStyle = FormBorderStyle.None;
-            Name = "Alat";
-            Text = "Alat";
+            Controls.Add(btnSimpan);
+            Name = "UpdateDataAlat";
+            Text = "UpdateDataAlat";
             ((System.ComponentModel.ISupportInitialize)numStock).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dgvAlat).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
+        private Button btnSimpan;
         private TextBox textNama;
         private NumericUpDown numStock;
-        private DataGridView dgvAlat;
-        private Button btnTambah;
     }
 }
