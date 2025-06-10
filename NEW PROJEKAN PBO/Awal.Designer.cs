@@ -51,8 +51,10 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.Desktop___7__2___1_;
+            BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1484, 1061);
             Controls.Add(button1);
+            DoubleBuffered = true;
             Name = "Awal";
             Text = "Awal";
             ResumeLayout(false);

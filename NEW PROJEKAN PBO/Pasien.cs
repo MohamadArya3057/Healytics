@@ -13,7 +13,6 @@ namespace NEW_PROJEKAN_PBO
 {
     public partial class Pasien1 : Form
     {
-        formPasien2 pasien2;
         Obat obat;
         Alat alat;
         Transaksi transaksi;
@@ -63,24 +62,9 @@ namespace NEW_PROJEKAN_PBO
             this.Size = new Size(w, h);
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            if (pasien2 == null)
-            {
-                pasien2 = new formPasien2();
-                pasien2.FormClosed += Pasien2_FormClosed;
-                pasien2.MdiParent = this;
-                pasien2.Show();
-            }
-            else
-            {
-                pasien2.Activate();
-            }
-        }
-
-        private void Pasien2_FormClosed(object? sender, FormClosedEventArgs e)
-        {
-            pasien2 = null;
+        private void Button2_Click(object sender, EventArgs e)
+        { 
+        
         }
 
         private void panel3_Paint(object sender, PaintEventArgs e)
@@ -158,6 +142,10 @@ namespace NEW_PROJEKAN_PBO
                 transaksi.FormClosed += Transaksi_FormClosed;
                 transaksi.MdiParent = this;
                 transaksi.Show();
+            }
+            else
+            {
+                transaksi.Activate();
             }
         }
 

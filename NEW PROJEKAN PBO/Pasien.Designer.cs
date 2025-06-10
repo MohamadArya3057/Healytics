@@ -150,7 +150,7 @@
             button2.Text = "            Pasien";
             button2.TextAlign = ContentAlignment.MiddleLeft;
             button2.UseVisualStyleBackColor = false;
-            button2.Click += button2_Click;
+            button2.Click += Button2_Click;
             // 
             // pnObat
             // 

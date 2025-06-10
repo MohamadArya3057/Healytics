@@ -22,7 +22,7 @@ namespace NEW_PROJEKAN_PBO
         public Alat()
         {
             InitializeComponent();
-            dgvAlat.CellContentClick -= dgvAlat_CellContentClick; 
+            dgvAlat.CellContentClick -= dgvAlat_CellContentClick;
             dgvAlat.CellContentClick += dgvAlat_CellContentClick;
             LoadData();
         }
@@ -76,7 +76,7 @@ namespace NEW_PROJEKAN_PBO
                     Stock = stock
                 };
 
-                var updateDataAlat = new UpdateDataAlat (data);
+                var updateDataAlat = new UpdateDataAlat(data);
                 if (updateDataAlat.ShowDialog() == DialogResult.OK)
                 {
                     controller.Update(updateDataAlat.AlatData);
@@ -107,9 +107,8 @@ namespace NEW_PROJEKAN_PBO
 
         private void ClearForm()
         {
-            textNama.Clear();
-            numStock.Value = 0;
             selectedId = -1;
         }
+
     }
 }

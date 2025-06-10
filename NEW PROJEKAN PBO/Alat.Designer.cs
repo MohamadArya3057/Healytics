@@ -28,27 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            textNama = new TextBox();
-            numStock = new NumericUpDown();
             dgvAlat = new DataGridView();
             btnTambah = new Button();
-            ((System.ComponentModel.ISupportInitialize)numStock).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvAlat).BeginInit();
             SuspendLayout();
-            // 
-            // textNama
-            // 
-            textNama.Location = new Point(581, 217);
-            textNama.Name = "textNama";
-            textNama.Size = new Size(100, 23);
-            textNama.TabIndex = 0;
-            // 
-            // numStock
-            // 
-            numStock.Location = new Point(619, 280);
-            numStock.Name = "numStock";
-            numStock.Size = new Size(120, 23);
-            numStock.TabIndex = 2;
             // 
             // dgvAlat
             // 
@@ -77,21 +60,14 @@
             ClientSize = new Size(1670, 1000);
             Controls.Add(btnTambah);
             Controls.Add(dgvAlat);
-            Controls.Add(numStock);
-            Controls.Add(textNama);
             FormBorderStyle = FormBorderStyle.None;
             Name = "Alat";
             Text = "Alat";
-            ((System.ComponentModel.ISupportInitialize)numStock).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvAlat).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
-
-        private TextBox textNama;
-        private NumericUpDown numStock;
         private DataGridView dgvAlat;
         private Button btnTambah;
     }

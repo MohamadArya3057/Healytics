@@ -1,4 +1,5 @@
 ﻿using NEW_PROJEKAN_PBO.Model;
+using Npgsql;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,34 +10,29 @@ namespace NEW_PROJEKAN_PBO.Controller
 {
     public class PasienController
     {
-        private List<DataPasien> daftarPasien = new List<DataPasien>();
-        private int nextId = 1;
+        private string connString = "Host=localhost;Username=postgres;Password=yourpassword;Database=yourdb";
 
-        public List<DataPasien> GetAll()
+        public List<DataPasien> GetAllPasien()
         {
-            return daftarPasien;
-        }
-
-        public void Add(DataPasien pasien)
-        {
-            pasien.Id = nextId++;
-            daftarPasien.Add(pasien);
-        }
-
-        public void Update(int index, DataPasien pasien)
-        {
-            if (index >= 0 && index < daftarPasien.Count)
+            var list = new List<DataPasien>();
+            using (var conn = new NpgsqlConnection(connString))
             {
-                daftarPasien[index] = pasien;
+                conn.Open();
+                string query = "SELECT nik, nama_pasien FROM transaksi GROUP BY nik, nama_pasien";
+                using (var cmd = new NpgsqlCommand(query, conn))
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        list.Add(new DataPasien
+                        {
+                            Nik = reader.GetString(0),
+                            NamaPasien = reader.GetString(1)
+                        });
+                    }
+                }
             }
-        }
-
-        public void Delete(int index)
-        {
-            if (index >= 0 && index < daftarPasien.Count)
-            {
-                daftarPasien.RemoveAt(index);
-            }
+            return list;
         }
     }
 }
