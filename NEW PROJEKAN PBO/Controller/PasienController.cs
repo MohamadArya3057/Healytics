@@ -15,10 +15,13 @@ namespace NEW_PROJEKAN_PBO.Controller
         public List<DataPasien> GetAllPasien()
         {
             var list = new List<DataPasien>();
+
             using (var conn = new NpgsqlConnection(connString))
             {
                 conn.Open();
-                string query = "SELECT nik, nama_pasien FROM transaksi GROUP BY nik, nama_pasien";
+
+                string query = "SELECT no_register, nama_pasien, umur, id_desa FROM pasien";
+
                 using (var cmd = new NpgsqlCommand(query, conn))
                 using (var reader = cmd.ExecuteReader())
                 {
@@ -26,8 +29,10 @@ namespace NEW_PROJEKAN_PBO.Controller
                     {
                         list.Add(new DataPasien
                         {
-                            Nik = reader.GetString(0),
-                            NamaPasien = reader.GetString(1)
+                            NoRegister = reader.GetString(0),
+                            NamaPasien = reader.GetString(1),
+                            Umur = reader.GetInt32(2),
+                            IdDesa = reader.GetInt32(3)
                         });
                     }
                 }

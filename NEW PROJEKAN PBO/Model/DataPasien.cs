@@ -8,13 +8,11 @@ namespace NEW_PROJEKAN_PBO.Model
 {
     public class DataPasien
     {
-        public string Nik { get; set; }
         public string NoRegister { get; set; }
         public string NamaPasien { get; set; }
         public int Umur { get; set; }
         public int IdDesa { get; set; }
     }
-
 
 }
 
