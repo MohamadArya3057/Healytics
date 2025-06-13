@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace NEW_PROJEKAN_PBO.model
 {
-    public class Gejala
+    public class Gejala : BaseModel
     {
-        public int Id_Gejala { get; set; }
         public string Nama_Gejala { get; set; }
     }
 }
