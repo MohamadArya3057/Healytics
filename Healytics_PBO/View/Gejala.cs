@@ -1,5 +1,4 @@
-﻿// Gejala.cs
-using Healytics_PBO.Controller;
+﻿using Healytics_PBO.Controller;
 using Healytics_PBO.Model;
 using System;
 using System.Collections.Generic;
@@ -15,7 +14,7 @@ namespace Healytics_PBO.View
 
         public Gejala()
         {
-            InitializeComponent();
+
         }
 
         private void Gejala_Load(object sender, EventArgs e)
