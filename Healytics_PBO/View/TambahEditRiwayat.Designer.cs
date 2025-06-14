@@ -28,221 +28,158 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            btnBatal = new Button();
-            labelPasien = new Label();
+            components = new System.ComponentModel.Container();
+            lblTanggal = new Label();
+            dtTanggal = new DateTimePicker();
+            lblCatatan = new Label();
+            txtCatatan = new TextBox();
+            lblGejala = new Label();
+            clbGejala = new CheckedListBox();
+            lblObat = new Label();
+            dgvObat = new DataGridView();
             btnSimpan = new Button();
-            dateTanggal = new DateTimePicker();
-            btnHapusBaris = new Button();
-            btnTambahBaris = new Button();
-            tbObat = new DataGridView();
-            ID = new DataGridViewTextBoxColumn();
-            nama_obat = new DataGridViewTextBoxColumn();
-            nama_kategori = new DataGridViewTextBoxColumn();
-            stock = new DataGridViewTextBoxColumn();
-            harga = new DataGridViewTextBoxColumn();
-            btnUpdate = new DataGridViewButtonColumn();
-            btnDelete = new DataGridViewButtonColumn();
-            ((System.ComponentModel.ISupportInitialize)tbObat).BeginInit();
+            obatModelBindingSource = new BindingSource(components);
+            colObat = new DataGridViewComboBoxColumn();
+            colJumlah = new DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)dgvObat).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)obatModelBindingSource).BeginInit();
             SuspendLayout();
             // 
-            // btnBatal
+            // lblTanggal
             // 
-            btnBatal.BackColor = Color.Gray;
-            btnBatal.FlatAppearance.BorderColor = Color.Gray;
-            btnBatal.FlatAppearance.BorderSize = 3;
-            btnBatal.FlatStyle = FlatStyle.Flat;
-            btnBatal.Font = new Font("Bahnschrift", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnBatal.ForeColor = SystemColors.ButtonFace;
-            btnBatal.Location = new Point(481, 704);
-            btnBatal.Name = "btnBatal";
-            btnBatal.Size = new Size(108, 45);
-            btnBatal.TabIndex = 33;
-            btnBatal.Text = "Batal";
-            btnBatal.UseVisualStyleBackColor = false;
-            btnBatal.Click += btnBatal_Click;
+            lblTanggal.AutoSize = true;
+            lblTanggal.Location = new Point(414, 134);
+            lblTanggal.Name = "lblTanggal";
+            lblTanggal.Size = new Size(73, 25);
+            lblTanggal.TabIndex = 0;
+            lblTanggal.Text = "Tanggal";
             // 
-            // labelPasien
+            // dtTanggal
             // 
-            labelPasien.AutoSize = true;
-            labelPasien.Font = new Font("Bahnschrift SemiBold", 30F, FontStyle.Bold);
-            labelPasien.ForeColor = Color.FromArgb(19, 62, 135);
-            labelPasien.Location = new Point(443, 142);
-            labelPasien.Name = "labelPasien";
-            labelPasien.Size = new Size(331, 72);
-            labelPasien.TabIndex = 28;
-            labelPasien.Text = "DATA OBAT";
+            dtTanggal.Location = new Point(607, 134);
+            dtTanggal.Name = "dtTanggal";
+            dtTanggal.Size = new Size(300, 31);
+            dtTanggal.TabIndex = 1;
+            // 
+            // lblCatatan
+            // 
+            lblCatatan.AutoSize = true;
+            lblCatatan.Location = new Point(414, 195);
+            lblCatatan.Name = "lblCatatan";
+            lblCatatan.Size = new Size(72, 25);
+            lblCatatan.TabIndex = 2;
+            lblCatatan.Text = "Catatan";
+            // 
+            // txtCatatan
+            // 
+            txtCatatan.Location = new Point(609, 196);
+            txtCatatan.Name = "txtCatatan";
+            txtCatatan.Size = new Size(150, 31);
+            txtCatatan.TabIndex = 3;
+            // 
+            // lblGejala
+            // 
+            lblGejala.AutoSize = true;
+            lblGejala.Location = new Point(414, 256);
+            lblGejala.Name = "lblGejala";
+            lblGejala.Size = new Size(59, 25);
+            lblGejala.TabIndex = 4;
+            lblGejala.Text = "Gejala";
+            // 
+            // clbGejala
+            // 
+            clbGejala.FormattingEnabled = true;
+            clbGejala.Location = new Point(612, 256);
+            clbGejala.Name = "clbGejala";
+            clbGejala.Size = new Size(180, 144);
+            clbGejala.TabIndex = 5;
+            // 
+            // lblObat
+            // 
+            lblObat.AutoSize = true;
+            lblObat.Location = new Point(414, 458);
+            lblObat.Name = "lblObat";
+            lblObat.Size = new Size(52, 25);
+            lblObat.TabIndex = 6;
+            lblObat.Text = "Obat";
+            // 
+            // dgvObat
+            // 
+            dgvObat.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvObat.Columns.AddRange(new DataGridViewColumn[] { colObat, colJumlah });
+            dgvObat.Location = new Point(608, 448);
+            dgvObat.Name = "dgvObat";
+            dgvObat.RowHeadersWidth = 62;
+            dgvObat.Size = new Size(360, 225);
+            dgvObat.TabIndex = 7;
             // 
             // btnSimpan
             // 
-            btnSimpan.BackColor = Color.ForestGreen;
-            btnSimpan.FlatAppearance.BorderColor = Color.ForestGreen;
-            btnSimpan.FlatAppearance.BorderSize = 3;
-            btnSimpan.FlatStyle = FlatStyle.Flat;
-            btnSimpan.Font = new Font("Bahnschrift", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnSimpan.ForeColor = Color.Honeydew;
-            btnSimpan.Location = new Point(616, 704);
+            btnSimpan.Location = new Point(414, 766);
             btnSimpan.Name = "btnSimpan";
-            btnSimpan.Size = new Size(120, 45);
-            btnSimpan.TabIndex = 27;
-            btnSimpan.UseVisualStyleBackColor = false;
-            btnSimpan.Click += btnSimpan_Click;
+            btnSimpan.Size = new Size(112, 34);
+            btnSimpan.TabIndex = 8;
+            btnSimpan.Text = "Simpan";
+            btnSimpan.UseVisualStyleBackColor = true;
             // 
-            // dateTanggal
+            // obatModelBindingSource
             // 
-            dateTanggal.Location = new Point(460, 242);
-            dateTanggal.Name = "dateTanggal";
-            dateTanggal.Size = new Size(300, 31);
-            dateTanggal.TabIndex = 35;
+            obatModelBindingSource.DataSource = typeof(Model.ObatModel);
             // 
-            // btnHapusBaris
+            // colObat
             // 
-            btnHapusBaris.BackColor = Color.Gray;
-            btnHapusBaris.FlatAppearance.BorderColor = Color.Gray;
-            btnHapusBaris.FlatAppearance.BorderSize = 3;
-            btnHapusBaris.FlatStyle = FlatStyle.Flat;
-            btnHapusBaris.Font = new Font("Bahnschrift", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnHapusBaris.ForeColor = SystemColors.ButtonFace;
-            btnHapusBaris.Location = new Point(461, 555);
-            btnHapusBaris.Name = "btnHapusBaris";
-            btnHapusBaris.Size = new Size(108, 45);
-            btnHapusBaris.TabIndex = 38;
-            btnHapusBaris.Text = "Hapus";
-            btnHapusBaris.UseVisualStyleBackColor = false;
-            btnHapusBaris.Click += btnHapusBaris_Click;
+            colObat.DataPropertyName = "id_obat";
+            colObat.DataSource = obatModelBindingSource;
+            colObat.HeaderText = "Obat";
+            colObat.MinimumWidth = 8;
+            colObat.Name = "colObat";
+            colObat.Width = 150;
             // 
-            // btnTambahBaris
+            // colJumlah
             // 
-            btnTambahBaris.BackColor = Color.ForestGreen;
-            btnTambahBaris.FlatAppearance.BorderColor = Color.ForestGreen;
-            btnTambahBaris.FlatAppearance.BorderSize = 3;
-            btnTambahBaris.FlatStyle = FlatStyle.Flat;
-            btnTambahBaris.Font = new Font("Bahnschrift", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnTambahBaris.ForeColor = Color.Honeydew;
-            btnTambahBaris.Location = new Point(596, 555);
-            btnTambahBaris.Name = "btnTambahBaris";
-            btnTambahBaris.Size = new Size(120, 45);
-            btnTambahBaris.TabIndex = 37;
-            btnTambahBaris.UseVisualStyleBackColor = false;
-            btnTambahBaris.Click += btnTambahBaris_Click;
-            // 
-            // tbObat
-            // 
-            tbObat.AllowUserToAddRows = false;
-            tbObat.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            tbObat.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            tbObat.BackgroundColor = Color.FromArgb(184, 237, 248);
-            tbObat.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            tbObat.Columns.AddRange(new DataGridViewColumn[] { ID, nama_obat, nama_kategori, stock, harga, btnUpdate, btnDelete });
-            tbObat.GridColor = Color.FromArgb(120, 195, 233);
-            tbObat.Location = new Point(460, 313);
-            tbObat.MultiSelect = false;
-            tbObat.Name = "tbObat";
-            tbObat.ReadOnly = true;
-            tbObat.RowHeadersVisible = false;
-            tbObat.RowHeadersWidth = 62;
-            tbObat.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            tbObat.ShowRowErrors = false;
-            tbObat.Size = new Size(970, 131);
-            tbObat.TabIndex = 39;
-            // 
-            // ID
-            // 
-            ID.HeaderText = "ID Obat";
-            ID.MinimumWidth = 8;
-            ID.Name = "ID";
-            ID.ReadOnly = true;
-            ID.Visible = false;
-            // 
-            // nama_obat
-            // 
-            nama_obat.HeaderText = "Nama Obat";
-            nama_obat.MinimumWidth = 8;
-            nama_obat.Name = "nama_obat";
-            nama_obat.ReadOnly = true;
-            // 
-            // nama_kategori
-            // 
-            nama_kategori.HeaderText = "Kategori";
-            nama_kategori.MinimumWidth = 8;
-            nama_kategori.Name = "nama_kategori";
-            nama_kategori.ReadOnly = true;
-            // 
-            // stock
-            // 
-            stock.HeaderText = "Harga";
-            stock.MinimumWidth = 8;
-            stock.Name = "stock";
-            stock.ReadOnly = true;
-            // 
-            // harga
-            // 
-            harga.HeaderText = "Stok";
-            harga.MinimumWidth = 8;
-            harga.Name = "harga";
-            harga.ReadOnly = true;
-            // 
-            // btnUpdate
-            // 
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = Color.Khaki;
-            btnUpdate.DefaultCellStyle = dataGridViewCellStyle1;
-            btnUpdate.HeaderText = "Action";
-            btnUpdate.MinimumWidth = 8;
-            btnUpdate.Name = "btnUpdate";
-            btnUpdate.ReadOnly = true;
-            btnUpdate.Text = "Update";
-            btnUpdate.UseColumnTextForButtonValue = true;
-            // 
-            // btnDelete
-            // 
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(255, 128, 128);
-            btnDelete.DefaultCellStyle = dataGridViewCellStyle2;
-            btnDelete.HeaderText = "";
-            btnDelete.MinimumWidth = 8;
-            btnDelete.Name = "btnDelete";
-            btnDelete.ReadOnly = true;
-            btnDelete.Text = "Delete";
-            btnDelete.UseColumnTextForButtonValue = true;
+            colJumlah.HeaderText = "Jumlah";
+            colJumlah.MinimumWidth = 8;
+            colJumlah.Name = "colJumlah";
+            colJumlah.Width = 150;
             // 
             // TambahEditRiwayat
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.White;
             BackgroundImage = Properties.Resources.bg;
             ClientSize = new Size(1440, 1024);
-            Controls.Add(tbObat);
-            Controls.Add(btnHapusBaris);
-            Controls.Add(btnTambahBaris);
-            Controls.Add(dateTanggal);
-            Controls.Add(btnBatal);
-            Controls.Add(labelPasien);
             Controls.Add(btnSimpan);
+            Controls.Add(dgvObat);
+            Controls.Add(lblObat);
+            Controls.Add(clbGejala);
+            Controls.Add(lblGejala);
+            Controls.Add(txtCatatan);
+            Controls.Add(lblCatatan);
+            Controls.Add(dtTanggal);
+            Controls.Add(lblTanggal);
             FormBorderStyle = FormBorderStyle.None;
             Name = "TambahEditRiwayat";
             Text = "TambahEditRiwayat";
-            Load += TambahEditRiwayat_Load;
-            ((System.ComponentModel.ISupportInitialize)tbObat).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvObat).EndInit();
+            ((System.ComponentModel.ISupportInitialize)obatModelBindingSource).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-        private Button btnBatal;
-        private Label labelPasien;
+
+        private Label lblTanggal;
+        private DateTimePicker dtTanggal;
+        private Label lblCatatan;
+        private TextBox txtCatatan;
+        private Label lblGejala;
+        private CheckedListBox clbGejala;
+        private Label lblObat;
+        private DataGridView dgvObat;
         private Button btnSimpan;
-        private DateTimePicker dateTanggal;
-        private Button btnHapusBaris;
-        private Button btnTambahBaris;
-        private DataGridView tbObat;
-        private DataGridViewTextBoxColumn ID;
-        private DataGridViewTextBoxColumn nama_obat;
-        private DataGridViewTextBoxColumn nama_kategori;
-        private DataGridViewTextBoxColumn stock;
-        private DataGridViewTextBoxColumn harga;
-        private DataGridViewButtonColumn btnUpdate;
-        private DataGridViewButtonColumn btnDelete;
+        private BindingSource obatModelBindingSource;
+        private DataGridViewComboBoxColumn colObat;
+        private DataGridViewTextBoxColumn colJumlah;
     }
 }

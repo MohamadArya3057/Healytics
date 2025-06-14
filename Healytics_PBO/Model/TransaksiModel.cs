@@ -8,17 +8,10 @@ namespace Healytics_PBO.Model
 {
     public class TransaksiModel : BaseModel
     {
-        public DateTime TanggalTransaksi { get; set; }
-        public string NamaPasien { get; set; }
-        public string Keluhan { get; set; }
-        public string NamaObat { get; set; }
-        public decimal Harga { get; set; }
-        public int Jumlah { get; set; }
-        public decimal Total { get; set; }
-
-        public override string ToString()
-        {
-            return $"{NamaPasien} - {NamaObat}";
-        }
+        public int id_pasien { get; set; }
+        public string nama_pasien { get; set; }
+        public DateTime tanggal { get; set; }
+        public decimal total { get; set; }
+        public List<DetailTransaksiModel> DetailItems { get; set; } = new List<DetailTransaksiModel>();
     }
 }

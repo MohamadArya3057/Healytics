@@ -31,9 +31,6 @@
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             tbPasien = new DataGridView();
-            btnSearch = new Button();
-            txtSearch = new TextBox();
-            btnTambah = new Button();
             ID = new DataGridViewTextBoxColumn();
             nama_pasien = new DataGridViewTextBoxColumn();
             umur = new DataGridViewTextBoxColumn();
@@ -41,6 +38,9 @@
             riwayat = new DataGridViewButtonColumn();
             btnUpdate = new DataGridViewButtonColumn();
             btnDelete = new DataGridViewButtonColumn();
+            btnSearch = new Button();
+            txtSearch = new TextBox();
+            btnTambah = new Button();
             ((System.ComponentModel.ISupportInitialize)tbPasien).BeginInit();
             SuspendLayout();
             // 
@@ -63,47 +63,7 @@
             tbPasien.ShowRowErrors = false;
             tbPasien.Size = new Size(970, 800);
             tbPasien.TabIndex = 9;
-            tbPasien.CellClick += tbPasien_CellClick;
-            // 
-            // btnSearch
-            // 
-            btnSearch.FlatAppearance.BorderColor = Color.SteelBlue;
-            btnSearch.FlatStyle = FlatStyle.Flat;
-            btnSearch.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnSearch.ForeColor = Color.SteelBlue;
-            btnSearch.Location = new Point(1328, 133);
-            btnSearch.Name = "btnSearch";
-            btnSearch.Size = new Size(65, 30);
-            btnSearch.TabIndex = 8;
-            btnSearch.Text = "search";
-            btnSearch.UseVisualStyleBackColor = true;
-            btnSearch.Click += btnSearch_Click;
-            // 
-            // txtSearch
-            // 
-            txtSearch.BackColor = Color.FromArgb(120, 195, 233);
-            txtSearch.BorderStyle = BorderStyle.None;
-            txtSearch.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtSearch.Location = new Point(1043, 133);
-            txtSearch.Name = "txtSearch";
-            txtSearch.Size = new Size(350, 30);
-            txtSearch.TabIndex = 7;
-            // 
-            // btnTambah
-            // 
-            btnTambah.BackColor = Color.White;
-            btnTambah.FlatAppearance.BorderColor = Color.SteelBlue;
-            btnTambah.FlatAppearance.BorderSize = 3;
-            btnTambah.FlatStyle = FlatStyle.Flat;
-            btnTambah.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnTambah.ForeColor = Color.SteelBlue;
-            btnTambah.Location = new Point(423, 133);
-            btnTambah.Name = "btnTambah";
-            btnTambah.Size = new Size(120, 40);
-            btnTambah.TabIndex = 6;
-            btnTambah.Text = "Add Data";
-            btnTambah.UseVisualStyleBackColor = false;
-            btnTambah.Click += btnTambah_Click;
+            tbPasien.CellContentClick += tbPasien_CellContentClick;
             // 
             // ID
             // 
@@ -166,6 +126,46 @@
             btnDelete.ReadOnly = true;
             btnDelete.Text = "Delete";
             btnDelete.UseColumnTextForButtonValue = true;
+            // 
+            // btnSearch
+            // 
+            btnSearch.FlatAppearance.BorderColor = Color.SteelBlue;
+            btnSearch.FlatStyle = FlatStyle.Flat;
+            btnSearch.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnSearch.ForeColor = Color.SteelBlue;
+            btnSearch.Location = new Point(1328, 133);
+            btnSearch.Name = "btnSearch";
+            btnSearch.Size = new Size(65, 30);
+            btnSearch.TabIndex = 8;
+            btnSearch.Text = "search";
+            btnSearch.UseVisualStyleBackColor = true;
+            btnSearch.Click += btnSearch_Click;
+            // 
+            // txtSearch
+            // 
+            txtSearch.BackColor = Color.FromArgb(120, 195, 233);
+            txtSearch.BorderStyle = BorderStyle.None;
+            txtSearch.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtSearch.Location = new Point(1043, 133);
+            txtSearch.Name = "txtSearch";
+            txtSearch.Size = new Size(350, 30);
+            txtSearch.TabIndex = 7;
+            // 
+            // btnTambah
+            // 
+            btnTambah.BackColor = Color.White;
+            btnTambah.FlatAppearance.BorderColor = Color.SteelBlue;
+            btnTambah.FlatAppearance.BorderSize = 3;
+            btnTambah.FlatStyle = FlatStyle.Flat;
+            btnTambah.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnTambah.ForeColor = Color.SteelBlue;
+            btnTambah.Location = new Point(423, 133);
+            btnTambah.Name = "btnTambah";
+            btnTambah.Size = new Size(120, 40);
+            btnTambah.TabIndex = 6;
+            btnTambah.Text = "Add Data";
+            btnTambah.UseVisualStyleBackColor = false;
+            btnTambah.Click += btnTambah_Click;
             // 
             // Pasien
             // 

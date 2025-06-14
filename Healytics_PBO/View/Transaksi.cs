@@ -38,7 +38,16 @@ namespace Healytics_PBO.View
 
                 if (MessageBox.Show("Update data ini?", "Konfirmasi", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    controller.Update(id, keluhan, jumlah, total);
+                    var updatedModel = new TransaksiModel
+                    {
+                        ID = id,
+                        // isikan properti yang kamu butuhkan, misal:
+                        // Catatan = keluhan, // jika ada
+                        // Jumlah = jumlah, // jika ada
+                        // TotalBiaya = total, // jika ada
+                    };
+
+                    controller.Update(updatedModel);
                     LoadData();
                 }
             }

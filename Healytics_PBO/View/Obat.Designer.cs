@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             btnTambah = new Button();
             txtSearch = new TextBox();
             btnSearch = new Button();
@@ -143,9 +143,9 @@
             // 
             // btnUpdate
             // 
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = Color.Khaki;
-            btnUpdate.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = Color.Khaki;
+            btnUpdate.DefaultCellStyle = dataGridViewCellStyle1;
             btnUpdate.HeaderText = "Action";
             btnUpdate.MinimumWidth = 8;
             btnUpdate.Name = "btnUpdate";
@@ -155,9 +155,9 @@
             // 
             // btnDelete
             // 
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = Color.FromArgb(255, 128, 128);
-            btnDelete.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(255, 128, 128);
+            btnDelete.DefaultCellStyle = dataGridViewCellStyle2;
             btnDelete.HeaderText = "";
             btnDelete.MinimumWidth = 8;
             btnDelete.Name = "btnDelete";

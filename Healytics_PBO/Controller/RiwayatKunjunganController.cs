@@ -57,7 +57,11 @@ namespace Healytics_PBO.Controller
             NpgsqlCommand cmd = new NpgsqlCommand();
             cmd.Connection = conn;
 
-            cmd.CommandText = $"INSERT INTO riwayat_kunjungan(tanggal, no_register, catatan) VALUES ('{r.tanggal}', {r.no_register}, '{r.catatan}') RETURNING id_riwayat";
+            string tglFormatted = r.tanggal.ToString("yyyy-MM-dd HH:mm:ss");
+
+            cmd.CommandText = $@"INSERT INTO riwayat_kunjungan(tanggal, no_register, catatan)
+VALUES ('{tglFormatted}', {r.no_register}, '{r.catatan}')
+RETURNING id_riwayat";
             int id = Convert.ToInt32(cmd.ExecuteScalar());
             conn.Close();
             return id;
@@ -112,6 +116,68 @@ namespace Healytics_PBO.Controller
                 });
             }
             conn.Close();
+            return list;
+        }
+
+        public List<DetailRiwayatModel> GetGejalaByRiwayat(int id_riwayat)
+        {
+            List<DetailRiwayatModel> list = new List<DetailRiwayatModel>();
+            using (var conn = new NpgsqlConnection("Host=localhost;Username=postgres;Password=120306;Database=Healytics;port=5432"))
+            {
+                conn.Open();
+                var cmd = new NpgsqlCommand();
+                cmd.Connection = conn;
+                cmd.CommandText = @"SELECT d.id_detail_riwayat, d.id_riwayat, d.id_gejala, g.nama_gejala FROM detail_riwayat d
+JOIN gejala g ON d.id_gejala = g.id_gejala
+WHERE d.id_riwayat = @id";
+                cmd.Parameters.AddWithValue("@id", id_riwayat);
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        list.Add(new DetailRiwayatModel
+                        {
+                            ID = reader.GetInt32(0),
+                            id_riwayat = reader.GetInt32(1),
+                            id_gejala = reader.GetInt32(2),
+                            nama_gejala = reader.GetString(3)
+                        });
+                    }
+                }
+            }
+            return list;
+        }
+
+        public List<DetailTransaksiModel> GetObatByRiwayat(int id_riwayat)
+        {
+            List<DetailTransaksiModel> list = new List<DetailTransaksiModel>();
+            using (var conn = new NpgsqlConnection("Host=localhost;Username=postgres;Password=120306;Database=Healytics;port=5432"))
+            {
+                conn.Open();
+                var cmd = new NpgsqlCommand();
+                cmd.Connection = conn;
+                cmd.CommandText = @"SELECT d.id_detail_transaksi, d.id_transaksi, d.id_obat, o.nama_obat, d.jumlah
+FROM detail_transaksi d
+JOIN obat o ON d.id_obat = o.id_obat
+WHERE d.id_transaksi = @id";
+                cmd.Parameters.AddWithValue("@id", id_riwayat); // disesuaikan jika id_riwayat != id_transaksi
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        list.Add(new DetailTransaksiModel
+                        {
+                            ID = reader.GetInt32(0),
+                            id_transaksi = reader.GetInt32(1),
+                            id_obat = reader.GetInt32(2),
+                            nama_obat = reader.GetString(3),
+                            jumlah = reader.GetInt32(4)
+                        });
+                    }
+                }
+            }
             return list;
         }
     }

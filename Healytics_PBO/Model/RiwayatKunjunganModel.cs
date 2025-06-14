@@ -12,5 +12,8 @@ namespace Healytics_PBO.Model
         public int no_register { get; set; }
         public string nama_pasien { get; set; }
         public string catatan { get; set; }
+
+        public string nama_desa { get; set; }
+
     }
 }

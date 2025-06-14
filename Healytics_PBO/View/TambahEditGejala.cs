@@ -5,7 +5,11 @@ using Healytics_PBO.Controller;
 
 namespace Healytics_PBO.View
 {
+<<<<<<< HEAD
+    public partial class TambahEditGejala : Form
+=======
     public partial class TambahEditGejala : Form 
+>>>>>>> bd465975ca0516bf317454e70d88417eda14e04d
     {
         public GejalaModel gejala;
         private string mode;

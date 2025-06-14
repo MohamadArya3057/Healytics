@@ -48,7 +48,16 @@ namespace Healytics_PBO.View
             TampilkanData(hasil);
         }
 
-        private void tbPasien_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void btnTambah_Click(object sender, EventArgs e)
+        {
+            TambahEditPasien form = new TambahEditPasien("Tambah");
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                LoadData();
+            }
+        }
+
+        private void tbPasien_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
@@ -71,23 +80,16 @@ namespace Healytics_PBO.View
                         LoadData();
                     }
                 }
-                //else if (tbPasien.Columns[e.ColumnIndex].Name == "riwayat")
-                //{
-                //    if (pasien != null)
-                //    {
-                //        RiwayatKunjungan form = new RiwayatKunjungan(pasien.ID, pasien.nama_pasien, pasien.nama_desa);
-                //        form.ShowDialog();
-                //    }
-                //}
-            }
-        }
-
-        private void btnTambah_Click(object sender, EventArgs e)
-        {
-            TambahEditPasien form = new TambahEditPasien("Tambah");
-            if (form.ShowDialog() == DialogResult.OK)
-            {
-                LoadData();
+                else if (tbPasien.Columns[e.ColumnIndex].Name == "riwayat")
+                {
+                    if (pasien != null)
+                    {
+                        RiwayatKunjungan form = new RiwayatKunjungan(pasien.ID, pasien.nama_pasien, pasien.nama_desa);
+                        form.MdiParent = this.MdiParent;
+                        form.Dock = DockStyle.Fill;
+                        form.Show();
+                    }
+                }
             }
         }
     }

@@ -61,7 +61,6 @@
             tbTransaksi.ShowRowErrors = false;
             tbTransaksi.Size = new Size(970, 800);
             tbTransaksi.TabIndex = 6;
-            tbTransaksi.CellContentClick += tbTransaksi_CellContentClick;
             // 
             // ID
             // 

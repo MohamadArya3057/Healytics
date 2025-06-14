@@ -12,6 +12,27 @@ namespace Healytics_PBO.Controller
         public List<GejalaModel> GetAll()
         {
             List<GejalaModel> list = new List<GejalaModel>();
+<<<<<<< HEAD
+
+            NpgsqlConnection conn = new NpgsqlConnection(connectionString);
+            conn.Open();
+
+            NpgsqlCommand cmd = new NpgsqlCommand();
+            cmd.Connection = conn;
+            cmd.CommandText = "SELECT id_gejala, nama_gejala FROM gejala ORDER BY id_gejala";
+
+            var reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                list.Add(new GejalaModel
+                {
+                    ID = reader.GetInt32(0),
+                    Nama_Gejala = reader.GetString(1)
+                });
+            }
+
+            conn.Close();
+=======
             using (NpgsqlConnection conn = new NpgsqlConnection(connectionString))
             {
                 conn.Open();
@@ -30,6 +51,7 @@ namespace Healytics_PBO.Controller
                     }
                 }
             }
+>>>>>>> bd465975ca0516bf317454e70d88417eda14e04d
             return list;
         }
 
@@ -74,5 +96,9 @@ namespace Healytics_PBO.Controller
                 }
             }
         }
+<<<<<<< HEAD
+
+=======
+>>>>>>> bd465975ca0516bf317454e70d88417eda14e04d
     }
 }
