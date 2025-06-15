@@ -1,9 +1,14 @@
-﻿using Healytics_PBO.Controller;
-using Healytics_PBO.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
+using Healytics_PBO.Controller;
+using Healytics_PBO.Model;
 
 namespace Healytics_PBO.View
 {
@@ -14,7 +19,7 @@ namespace Healytics_PBO.View
 
         public Gejala()
         {
-
+            InitializeComponent();
         }
 
         private void Gejala_Load(object sender, EventArgs e)
@@ -26,22 +31,22 @@ namespace Healytics_PBO.View
         {
             semuaGejala = controller.GetAll();
             TampilkanData(semuaGejala);
-            tbGejala.Height = tbGejala.ColumnHeadersHeight + (tbGejala.Rows.Count * tbGejala.RowTemplate.Height);
+            tbGejala.Height = tbGejala.ColumnHeadersHeight + (tbGejala.Rows.Count * tbGejala.RowTemplate.Height) + 10;
         }
 
         private void TampilkanData(List<GejalaModel> data)
         {
             tbGejala.Rows.Clear();
-            foreach (var g in data)
+            foreach (var a in data)
             {
-                tbGejala.Rows.Add(g.ID, g.Nama_Gejala);
+                tbGejala.Rows.Add(a.ID, a.nama_gejala);
             }
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
             string keyword = txtSearch.Text.ToLower();
-            var hasil = semuaGejala.Where(g => g.Nama_Gejala.ToLower().Contains(keyword)).ToList();
+            var hasil = semuaGejala.Where(a => a.nama_gejala.ToLower().Contains(keyword)).ToList();
             TampilkanData(hasil);
         }
 
@@ -53,8 +58,9 @@ namespace Healytics_PBO.View
 
                 if (tbGejala.Columns[e.ColumnIndex].Name == "btnUpdate")
                 {
-                    GejalaModel g = semuaGejala.First(x => x.ID == id);
-                    TambahEditGejala form = new TambahEditGejala("Update") { gejala = g };
+                    GejalaModel gejala = semuaGejala.First(x => x.ID == id);
+                    TambahEditGejala form = new TambahEditGejala("Update");
+                    form.gejala = gejala;
                     form.ShowDialog();
                     LoadData();
                 }

@@ -7,14 +7,10 @@ namespace Healytics_PBO.Controller
 {
     public class GejalaController : IRepository<GejalaModel>
     {
-        private readonly string connectionString = "Host=localhost;Username=postgres;Password=120306;Database=Healytics;port=5432";
-
         public List<GejalaModel> GetAll()
         {
             List<GejalaModel> list = new List<GejalaModel>();
-<<<<<<< HEAD
-
-            NpgsqlConnection conn = new NpgsqlConnection(connectionString);
+            NpgsqlConnection conn = new NpgsqlConnection("Host=localhost;Username=postgres;Password=120306;Database=Healytics;port=5432");
             conn.Open();
 
             NpgsqlCommand cmd = new NpgsqlCommand();
@@ -27,78 +23,47 @@ namespace Healytics_PBO.Controller
                 list.Add(new GejalaModel
                 {
                     ID = reader.GetInt32(0),
-                    Nama_Gejala = reader.GetString(1)
+                    nama_gejala = reader.GetString(1)
                 });
             }
-
             conn.Close();
-=======
-            using (NpgsqlConnection conn = new NpgsqlConnection(connectionString))
-            {
-                conn.Open();
-                string query = "SELECT id_gejala, nama_gejala FROM gejala";
-
-                using (NpgsqlCommand cmd = new NpgsqlCommand(query, conn))
-                using (NpgsqlDataReader reader = cmd.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        list.Add(new GejalaModel
-                        {
-                            ID = reader.GetInt32(0),
-                            Nama_Gejala = reader.GetString(1)
-                        });
-                    }
-                }
-            }
->>>>>>> bd465975ca0516bf317454e70d88417eda14e04d
             return list;
         }
 
         public void Insert(GejalaModel g)
         {
-            using (NpgsqlConnection conn = new NpgsqlConnection(connectionString))
-            {
-                conn.Open();
-                string query = $"INSERT INTO gejala(nama_gejala) VALUES ('{g.Nama_Gejala}')";
+            NpgsqlConnection conn = new NpgsqlConnection("Host=localhost;Username=postgres;Password=120306;Database=Healytics;port=5432");
+            conn.Open();
 
-                using (NpgsqlCommand cmd = new NpgsqlCommand(query, conn))
-                {
-                    cmd.ExecuteNonQuery();
-                }
-            }
+            NpgsqlCommand cmd = new NpgsqlCommand();
+            cmd.Connection = conn;
+            cmd.CommandText = $"INSERT INTO gejala(nama_gejala) VALUES '{g.nama_gejala}'";
+            cmd.ExecuteNonQuery();
+            conn.Close();
         }
 
         public void Update(GejalaModel g)
         {
-            using (NpgsqlConnection conn = new NpgsqlConnection(connectionString))
-            {
-                conn.Open();
-                string query = $"UPDATE gejala SET nama_gejala = '{g.Nama_Gejala}' WHERE id_gejala = {g.ID}";
+            NpgsqlConnection conn = new NpgsqlConnection("Host=localhost;Username=postgres;Password=120306;Database=Healytics;port=5432");
+            conn.Open();
 
-                using (NpgsqlCommand cmd = new NpgsqlCommand(query, conn))
-                {
-                    cmd.ExecuteNonQuery();
-                }
-            }
+            NpgsqlCommand cmd = new NpgsqlCommand();
+            cmd.Connection = conn;
+            cmd.CommandText = $"UPDATE gejala SET nama_gejala = '{g.nama_gejala}' WHERE id_gejala = {g.ID}";
+            cmd.ExecuteNonQuery();
+            conn.Close();
         }
 
         public void Delete(int id)
         {
-            using (NpgsqlConnection conn = new NpgsqlConnection(connectionString))
-            {
-                conn.Open();
-                string query = $"DELETE FROM gejala WHERE id_gejala = {id}";
+            NpgsqlConnection conn = new NpgsqlConnection("Host=localhost;Username=postgres;Password=120306;Database=Healytics;port=5432");
+            conn.Open();
 
-                using (NpgsqlCommand cmd = new NpgsqlCommand(query, conn))
-                {
-                    cmd.ExecuteNonQuery();
-                }
-            }
+            NpgsqlCommand cmd = new NpgsqlCommand();
+            cmd.Connection = conn;
+            cmd.CommandText = $"DELETE FROM gejala WHERE id_gejala = {id}";
+            cmd.ExecuteNonQuery();
+            conn.Close();
         }
-<<<<<<< HEAD
-
-=======
->>>>>>> bd465975ca0516bf317454e70d88417eda14e04d
     }
 }

@@ -8,6 +8,6 @@ namespace Healytics_PBO.Model
 {
     public class GejalaModel : BaseModel
     {
-        public string Nama_Gejala { get; set; }
+        public string nama_gejala { get; set; }
     }
 }

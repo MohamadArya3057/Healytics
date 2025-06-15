@@ -153,6 +153,7 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.White;
             BackgroundImage = Properties.Resources.bg;
             ClientSize = new Size(1418, 968);
             Controls.Add(tbAlat);

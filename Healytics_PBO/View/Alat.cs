@@ -66,7 +66,7 @@ namespace Healytics_PBO.View
                 }
                 else if (tbAlat.Columns[e.ColumnIndex].Name == "btnDelete")
                 {
-                    var result = MessageBox.Show("Yakin ingin menghapus data?", "Konfirmasi", MessageBoxButtons.YesNo);
+                    var result = MessageBox.Show("Apakah anda yakin ingin menghapus data?", "Konfirmasi", MessageBoxButtons.YesNo);
                     if (result == DialogResult.Yes)
                     {
                         controller.Delete(id);

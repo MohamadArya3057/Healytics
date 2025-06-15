@@ -30,6 +30,7 @@ namespace Healytics_PBO.View
         {
             semuaPasien = controller.GetAll();
             TampilkanData(semuaPasien);
+            tbPasien.Height = tbPasien.ColumnHeadersHeight + (tbPasien.Rows.Count * tbPasien.RowTemplate.Height);
         }
 
         private void TampilkanData(List<PasienModel> data)
@@ -51,10 +52,9 @@ namespace Healytics_PBO.View
         private void btnTambah_Click(object sender, EventArgs e)
         {
             TambahEditPasien form = new TambahEditPasien("Tambah");
-            if (form.ShowDialog() == DialogResult.OK)
-            {
-                LoadData();
-            }
+            form.MdiParent = this.MdiParent;
+            form.Dock = DockStyle.Fill;
+            form.Show();
         }
 
         private void tbPasien_CellContentClick(object sender, DataGridViewCellEventArgs e)

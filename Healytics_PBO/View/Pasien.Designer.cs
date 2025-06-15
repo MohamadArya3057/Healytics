@@ -171,6 +171,7 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.White;
             BackgroundImage = Properties.Resources.bg;
             ClientSize = new Size(1440, 1024);
             Controls.Add(tbPasien);

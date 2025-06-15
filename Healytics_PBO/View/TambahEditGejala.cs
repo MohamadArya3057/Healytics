@@ -1,56 +1,75 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using Healytics_PBO.Model;
 using Healytics_PBO.Controller;
 
 namespace Healytics_PBO.View
 {
-<<<<<<< HEAD
     public partial class TambahEditGejala : Form
-=======
-    public partial class TambahEditGejala : Form 
->>>>>>> bd465975ca0516bf317454e70d88417eda14e04d
     {
+        private string type;
         public GejalaModel gejala;
-        private string mode;
 
-        public TambahEditGejala(string mode)
+        public TambahEditGejala(string type)
         {
             InitializeComponent();
-            this.mode = mode;
+            this.type = type;
         }
 
         private void TambahEditGejala_Load(object sender, EventArgs e)
         {
-            if (mode == "Update" && gejala != null)
+            if (type == "Tambah")
             {
-                txtNamaGejala.Text = gejala.Nama_Gejala;
+                this.Text = "Tambah Data Gejala";
+                btnSimpan.Text = "Tambahkan";
+            }
+            else
+            {
+                this.Text = "Update Data Gejala";
+                btnSimpan.Text = "Perbarui";
+
+                if (gejala != null)
+                {
+                    txtNamagGejala.Text = gejala.nama_gejala;
+                }
             }
         }
 
         private void btnSimpan_Click(object sender, EventArgs e)
         {
-            string nama = txtNamaGejala.Text.Trim();
-            if (string.IsNullOrEmpty(nama))
+            if (txtNamagGejala.Text == "")
             {
-                MessageBox.Show("Nama gejala tidak boleh kosong.");
+                MessageBox.Show("Semua data wajib diisi!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            GejalaController controller = new GejalaController();
-
-            if (mode == "Tambah")
+            GejalaModel data = new GejalaModel
             {
-                controller.Insert(new GejalaModel { Nama_Gejala = nama });
-                MessageBox.Show("Data berhasil ditambahkan.");
-            }
-            else if (mode == "Update" && gejala != null)
+                nama_gejala = txtNamagGejala.Text
+            };
+
+            var controller = new GejalaController();
+
+            if (type == "Tambah")
             {
-                gejala.Nama_Gejala = nama;
-                controller.Update(gejala);
-                MessageBox.Show("Data berhasil diperbarui.");
+                controller.Insert(data);
+                MessageBox.Show("Data Gejala berhasil ditambahkan!", "Informasi");
+            }
+            else
+            {
+                data.ID = gejala.ID;
+                controller.Update(data);
+                MessageBox.Show("Data Gejala berhasil diperbarui.", "Informasi");
             }
 
+            this.DialogResult = DialogResult.OK;
             this.Close();
         }
 

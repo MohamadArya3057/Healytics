@@ -29,102 +29,48 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            lblTanggal = new Label();
             dtTanggal = new DateTimePicker();
-            lblCatatan = new Label();
-            txtCatatan = new TextBox();
-            lblGejala = new Label();
-            clbGejala = new CheckedListBox();
-            lblObat = new Label();
             dgvObat = new DataGridView();
-            btnSimpan = new Button();
-            obatModelBindingSource = new BindingSource(components);
             colObat = new DataGridViewComboBoxColumn();
+            obatModelBindingSource = new BindingSource(components);
             colJumlah = new DataGridViewTextBoxColumn();
+            label1 = new Label();
+            lblTanggal = new Label();
+            lblCatatan = new Label();
+            lblGejala = new Label();
+            txtCatatan = new TextBox();
+            lblObat = new Label();
+            btnBatal = new Button();
+            btnSimpan = new Button();
+            clbGejala = new CheckedListBox();
             ((System.ComponentModel.ISupportInitialize)dgvObat).BeginInit();
             ((System.ComponentModel.ISupportInitialize)obatModelBindingSource).BeginInit();
             SuspendLayout();
             // 
-            // lblTanggal
-            // 
-            lblTanggal.AutoSize = true;
-            lblTanggal.Location = new Point(414, 134);
-            lblTanggal.Name = "lblTanggal";
-            lblTanggal.Size = new Size(73, 25);
-            lblTanggal.TabIndex = 0;
-            lblTanggal.Text = "Tanggal";
-            // 
             // dtTanggal
             // 
-            dtTanggal.Location = new Point(607, 134);
+            dtTanggal.CalendarForeColor = Color.SteelBlue;
+            dtTanggal.CalendarMonthBackground = Color.FromArgb(196, 227, 242);
+            dtTanggal.CalendarTitleForeColor = Color.SteelBlue;
+            dtTanggal.CalendarTrailingForeColor = Color.FromArgb(196, 227, 242);
+            dtTanggal.Location = new Point(758, 279);
             dtTanggal.Name = "dtTanggal";
-            dtTanggal.Size = new Size(300, 31);
+            dtTanggal.Size = new Size(500, 31);
             dtTanggal.TabIndex = 1;
-            // 
-            // lblCatatan
-            // 
-            lblCatatan.AutoSize = true;
-            lblCatatan.Location = new Point(414, 195);
-            lblCatatan.Name = "lblCatatan";
-            lblCatatan.Size = new Size(72, 25);
-            lblCatatan.TabIndex = 2;
-            lblCatatan.Text = "Catatan";
-            // 
-            // txtCatatan
-            // 
-            txtCatatan.Location = new Point(609, 196);
-            txtCatatan.Name = "txtCatatan";
-            txtCatatan.Size = new Size(150, 31);
-            txtCatatan.TabIndex = 3;
-            // 
-            // lblGejala
-            // 
-            lblGejala.AutoSize = true;
-            lblGejala.Location = new Point(414, 256);
-            lblGejala.Name = "lblGejala";
-            lblGejala.Size = new Size(59, 25);
-            lblGejala.TabIndex = 4;
-            lblGejala.Text = "Gejala";
-            // 
-            // clbGejala
-            // 
-            clbGejala.FormattingEnabled = true;
-            clbGejala.Location = new Point(612, 256);
-            clbGejala.Name = "clbGejala";
-            clbGejala.Size = new Size(180, 144);
-            clbGejala.TabIndex = 5;
-            // 
-            // lblObat
-            // 
-            lblObat.AutoSize = true;
-            lblObat.Location = new Point(414, 458);
-            lblObat.Name = "lblObat";
-            lblObat.Size = new Size(52, 25);
-            lblObat.TabIndex = 6;
-            lblObat.Text = "Obat";
             // 
             // dgvObat
             // 
+            dgvObat.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvObat.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvObat.BackgroundColor = Color.FromArgb(196, 227, 242);
             dgvObat.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvObat.Columns.AddRange(new DataGridViewColumn[] { colObat, colJumlah });
-            dgvObat.Location = new Point(608, 448);
+            dgvObat.GridColor = Color.FromArgb(196, 227, 242);
+            dgvObat.Location = new Point(758, 557);
             dgvObat.Name = "dgvObat";
             dgvObat.RowHeadersWidth = 62;
-            dgvObat.Size = new Size(360, 225);
+            dgvObat.Size = new Size(500, 70);
             dgvObat.TabIndex = 7;
-            // 
-            // btnSimpan
-            // 
-            btnSimpan.Location = new Point(414, 766);
-            btnSimpan.Name = "btnSimpan";
-            btnSimpan.Size = new Size(112, 34);
-            btnSimpan.TabIndex = 8;
-            btnSimpan.Text = "Simpan";
-            btnSimpan.UseVisualStyleBackColor = true;
-            // 
-            // obatModelBindingSource
-            // 
-            obatModelBindingSource.DataSource = typeof(Model.ObatModel);
             // 
             // colObat
             // 
@@ -133,14 +79,126 @@
             colObat.HeaderText = "Obat";
             colObat.MinimumWidth = 8;
             colObat.Name = "colObat";
-            colObat.Width = 150;
+            // 
+            // obatModelBindingSource
+            // 
+            obatModelBindingSource.DataSource = typeof(Model.ObatModel);
             // 
             // colJumlah
             // 
             colJumlah.HeaderText = "Jumlah";
             colJumlah.MinimumWidth = 8;
             colJumlah.Name = "colJumlah";
-            colJumlah.Width = 150;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Bahnschrift SemiBold", 30F, FontStyle.Bold);
+            label1.ForeColor = Color.FromArgb(19, 62, 135);
+            label1.Location = new Point(423, 119);
+            label1.Name = "label1";
+            label1.Size = new Size(641, 72);
+            label1.TabIndex = 9;
+            label1.Text = "DATA RIWAYAT PASIEN";
+            // 
+            // lblTanggal
+            // 
+            lblTanggal.AutoSize = true;
+            lblTanggal.BackColor = Color.White;
+            lblTanggal.Font = new Font("Bahnschrift SemiBold", 18F, FontStyle.Bold);
+            lblTanggal.ForeColor = Color.SteelBlue;
+            lblTanggal.Location = new Point(441, 267);
+            lblTanggal.Name = "lblTanggal";
+            lblTanggal.Size = new Size(141, 43);
+            lblTanggal.TabIndex = 10;
+            lblTanggal.Text = "Tanggal";
+            // 
+            // lblCatatan
+            // 
+            lblCatatan.AutoSize = true;
+            lblCatatan.BackColor = Color.White;
+            lblCatatan.Font = new Font("Bahnschrift SemiBold", 18F, FontStyle.Bold);
+            lblCatatan.ForeColor = Color.SteelBlue;
+            lblCatatan.Location = new Point(441, 358);
+            lblCatatan.Name = "lblCatatan";
+            lblCatatan.Size = new Size(142, 43);
+            lblCatatan.TabIndex = 11;
+            lblCatatan.Text = "Catatan";
+            // 
+            // lblGejala
+            // 
+            lblGejala.AutoSize = true;
+            lblGejala.BackColor = Color.White;
+            lblGejala.Font = new Font("Bahnschrift SemiBold", 18F, FontStyle.Bold);
+            lblGejala.ForeColor = Color.SteelBlue;
+            lblGejala.Location = new Point(441, 456);
+            lblGejala.Name = "lblGejala";
+            lblGejala.Size = new Size(119, 43);
+            lblGejala.TabIndex = 12;
+            lblGejala.Text = "Gejala";
+            // 
+            // txtCatatan
+            // 
+            txtCatatan.BackColor = Color.FromArgb(196, 227, 242);
+            txtCatatan.BorderStyle = BorderStyle.FixedSingle;
+            txtCatatan.Font = new Font("Bahnschrift", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtCatatan.ForeColor = Color.SteelBlue;
+            txtCatatan.Location = new Point(758, 360);
+            txtCatatan.Name = "txtCatatan";
+            txtCatatan.Size = new Size(500, 41);
+            txtCatatan.TabIndex = 13;
+            // 
+            // lblObat
+            // 
+            lblObat.AutoSize = true;
+            lblObat.BackColor = Color.White;
+            lblObat.Font = new Font("Bahnschrift SemiBold", 18F, FontStyle.Bold);
+            lblObat.ForeColor = Color.SteelBlue;
+            lblObat.Location = new Point(441, 557);
+            lblObat.Name = "lblObat";
+            lblObat.Size = new Size(93, 43);
+            lblObat.TabIndex = 15;
+            lblObat.Text = "Obat";
+            // 
+            // btnBatal
+            // 
+            btnBatal.BackColor = Color.Gray;
+            btnBatal.FlatAppearance.BorderColor = Color.Gray;
+            btnBatal.FlatAppearance.BorderSize = 3;
+            btnBatal.FlatStyle = FlatStyle.Flat;
+            btnBatal.Font = new Font("Bahnschrift", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnBatal.ForeColor = SystemColors.ButtonFace;
+            btnBatal.Location = new Point(449, 707);
+            btnBatal.Name = "btnBatal";
+            btnBatal.Size = new Size(108, 45);
+            btnBatal.TabIndex = 17;
+            btnBatal.Text = "Batal";
+            btnBatal.UseVisualStyleBackColor = false;
+            // 
+            // btnSimpan
+            // 
+            btnSimpan.BackColor = Color.ForestGreen;
+            btnSimpan.FlatAppearance.BorderColor = Color.ForestGreen;
+            btnSimpan.FlatAppearance.BorderSize = 3;
+            btnSimpan.FlatStyle = FlatStyle.Flat;
+            btnSimpan.Font = new Font("Bahnschrift", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnSimpan.ForeColor = Color.Honeydew;
+            btnSimpan.Location = new Point(584, 707);
+            btnSimpan.Name = "btnSimpan";
+            btnSimpan.Size = new Size(120, 45);
+            btnSimpan.TabIndex = 16;
+            btnSimpan.UseVisualStyleBackColor = false;
+            // 
+            // clbGejala
+            // 
+            clbGejala.BackColor = Color.FromArgb(196, 227, 242);
+            clbGejala.Font = new Font("Bahnschrift SemiBold", 14F, FontStyle.Bold);
+            clbGejala.ForeColor = Color.SteelBlue;
+            clbGejala.FormattingEnabled = true;
+            clbGejala.Location = new Point(758, 457);
+            clbGejala.Name = "clbGejala";
+            clbGejala.Size = new Size(500, 42);
+            clbGejala.TabIndex = 18;
             // 
             // TambahEditRiwayat
             // 
@@ -149,15 +207,17 @@
             BackColor = Color.White;
             BackgroundImage = Properties.Resources.bg;
             ClientSize = new Size(1440, 1024);
-            Controls.Add(btnSimpan);
-            Controls.Add(dgvObat);
-            Controls.Add(lblObat);
             Controls.Add(clbGejala);
-            Controls.Add(lblGejala);
+            Controls.Add(btnBatal);
+            Controls.Add(btnSimpan);
+            Controls.Add(lblObat);
             Controls.Add(txtCatatan);
+            Controls.Add(lblGejala);
             Controls.Add(lblCatatan);
-            Controls.Add(dtTanggal);
             Controls.Add(lblTanggal);
+            Controls.Add(label1);
+            Controls.Add(dgvObat);
+            Controls.Add(dtTanggal);
             FormBorderStyle = FormBorderStyle.None;
             Name = "TambahEditRiwayat";
             Text = "TambahEditRiwayat";
@@ -168,18 +228,19 @@
         }
 
         #endregion
-
-        private Label lblTanggal;
         private DateTimePicker dtTanggal;
-        private Label lblCatatan;
-        private TextBox txtCatatan;
-        private Label lblGejala;
-        private CheckedListBox clbGejala;
-        private Label lblObat;
         private DataGridView dgvObat;
-        private Button btnSimpan;
         private BindingSource obatModelBindingSource;
         private DataGridViewComboBoxColumn colObat;
         private DataGridViewTextBoxColumn colJumlah;
+        private Label label1;
+        private Label lblTanggal;
+        private Label lblCatatan;
+        private Label lblGejala;
+        private TextBox txtCatatan;
+        private Label lblObat;
+        private Button btnBatal;
+        private Button btnSimpan;
+        private CheckedListBox clbGejala;
     }
 }

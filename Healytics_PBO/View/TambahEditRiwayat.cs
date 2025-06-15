@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Healytics_PBO.Controller;
 using Healytics_PBO.Model;
@@ -18,14 +13,14 @@ namespace Healytics_PBO.View
         private string nama_pasien;
         private string nama_desa;
 
-        private RiwayatKunjunganController controller = new RiwayatKunjunganController();
-        private GejalaController gejalaController = new GejalaController();
-        private ObatController obatController = new ObatController();
-        private DetailRiwayatController detailRiwayatController = new DetailRiwayatController();
-        private DetailTransaksiController detailTransaksiController = new DetailTransaksiController();
+        private readonly RiwayatKunjunganController controller = new RiwayatKunjunganController();
+        private readonly GejalaController gejalaController = new GejalaController();
+        private readonly ObatController obatController = new ObatController();
+        private readonly DetailRiwayatController detailRiwayatController = new DetailRiwayatController();
+        private readonly DetailTransaksiController detailTransaksiController = new DetailTransaksiController();
 
-        private List<GejalaModel> semuaGejala;
-        private List<ObatModel> semuaObat;
+        private List<GejalaModel> semuaGejala = new List<GejalaModel>();
+        private List<ObatModel> semuaObat = new List<ObatModel>();
 
         public TambahEditRiwayat(int no_register, string nama_pasien, string nama_desa)
         {
@@ -34,71 +29,87 @@ namespace Healytics_PBO.View
             this.nama_pasien = nama_pasien;
             this.nama_desa = nama_desa;
 
-            btnSimpan.Click += btnSimpan_Click;
             this.Load += TambahEditRiwayat_Load;
+            btnSimpan.Click += btnSimpan_Click;
+            btnBatal.Click += (s, e) => this.Close();
 
+            this.TopLevel = false;
             this.Dock = DockStyle.Fill;
         }
 
-
-        private void TambahEditRiwayat_Load(object sender, EventArgs e)
+        private void TambahEditRiwayat_Load(object? sender, EventArgs e)
         {
             semuaGejala = gejalaController.GetAll();
             clbGejala.Items.Clear();
             foreach (var g in semuaGejala)
-            {
-                clbGejala.Items.Add(g);
-            }
+                clbGejala.Items.Add(g, false);
             clbGejala.DisplayMember = "nama_gejala";
 
             semuaObat = obatController.GetAll();
-            var combo = (DataGridViewComboBoxColumn)dgvObat.Columns["colObat"];
-            combo.DataSource = semuaObat;
-            combo.DisplayMember = "nama_obat";
-            combo.ValueMember = "ID";
+            var combo = dgvObat.Columns["colObat"] as DataGridViewComboBoxColumn;
+            if (combo != null)
+            {
+                combo.DataSource = semuaObat;
+                combo.DisplayMember = "nama_obat";
+                combo.ValueMember = "ID";
+            }
+
+            dgvObat.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
         }
 
-        private void btnSimpan_Click(object sender, EventArgs e)
+        private void btnSimpan_Click(object? sender, EventArgs e)
         {
-            if (txtCatatan.Text.Trim() == "")
+            if (string.IsNullOrWhiteSpace(txtCatatan.Text))
             {
-                MessageBox.Show("Catatan tidak boleh kosong.");
+                MessageBox.Show("Catatan tidak boleh kosong.", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            RiwayatKunjunganModel r = new RiwayatKunjunganModel
+            var riwayat = new RiwayatKunjunganModel
             {
                 tanggal = dtTanggal.Value,
                 no_register = no_register,
                 catatan = txtCatatan.Text
             };
 
-            int idRiwayat = controller.InsertReturnId(r);
+            int idRiwayat = controller.InsertReturnId(riwayat);
 
             foreach (var item in clbGejala.CheckedItems)
             {
-                GejalaModel g = item as GejalaModel;
-                if (g == null) continue;
-
-            foreach (DataGridViewRow row in dgvObat.Rows)
+                if (item is GejalaModel g)
                 {
-                    if (row.IsNewRow) continue;
-                    if (row.Cells["colObat"].Value == null || row.Cells["colJumlah"].Value == null) continue;
-
-                    int idObat = Convert.ToInt32(row.Cells["colObat"].Value);
-
-                    DetailRiwayatModel d = new DetailRiwayatModel
+                    var detail = new DetailRiwayatModel
                     {
                         id_riwayat = idRiwayat,
-                        id_gejala = g.ID,
-                        id_obat = idObat
+                        id_gejala = g.ID
                     };
-
-                    detailRiwayatController.Insert(d);
+                    detailRiwayatController.Insert(detail);
                 }
             }
 
-            MessageBox.Show("Riwayat kunjungan berhasil ditambahkan.", "Sukses");
+            foreach (DataGridViewRow row in dgvObat.Rows)
+            {
+                if (row.IsNewRow) continue;
+                if (row.Cells["colObat"].Value == null || row.Cells["colJumlah"].Value == null) continue;
+
+                int idObat = Convert.ToInt32(row.Cells["colObat"].Value);
+                int jumlah = Convert.ToInt32(row.Cells["colJumlah"].Value);
+                var obat = semuaObat.FirstOrDefault(o => o.ID == idObat);
+                if (obat == null) continue;
+
+                var dt = new DetailTransaksiModel
+                {
+                    id_transaksi = idRiwayat,
+                    id_obat = idObat,
+                    nama_obat = obat.nama_obat,
+                    harga = obat.harga,
+                    jumlah = jumlah,
+                    catatan = ""
+                };
+                detailTransaksiController.Insert(dt);
+            }
+
+            MessageBox.Show("Riwayat kunjungan berhasil ditambahkan.", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Close();
         }
     }
