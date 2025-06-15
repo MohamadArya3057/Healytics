@@ -38,6 +38,7 @@
             btnSearch = new Button();
             txtSearch = new TextBox();
             btnTambah = new Button();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)tbGejala).BeginInit();
             SuspendLayout();
             // 
@@ -50,7 +51,7 @@
             tbGejala.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             tbGejala.Columns.AddRange(new DataGridViewColumn[] { ID, nama_gejala, btnUpdate, btnDelete });
             tbGejala.GridColor = Color.FromArgb(120, 195, 233);
-            tbGejala.Location = new Point(413, 188);
+            tbGejala.Location = new Point(411, 255);
             tbGejala.Margin = new Padding(2);
             tbGejala.MultiSelect = false;
             tbGejala.Name = "tbGejala";
@@ -59,7 +60,7 @@
             tbGejala.RowHeadersWidth = 62;
             tbGejala.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             tbGejala.ShowRowErrors = false;
-            tbGejala.Size = new Size(970, 800);
+            tbGejala.Size = new Size(970, 209);
             tbGejala.TabIndex = 13;
             tbGejala.CellClick += tbGejala_CellClick;
             // 
@@ -108,7 +109,7 @@
             btnSearch.FlatStyle = FlatStyle.Flat;
             btnSearch.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnSearch.ForeColor = Color.SteelBlue;
-            btnSearch.Location = new Point(1318, 112);
+            btnSearch.Location = new Point(1316, 179);
             btnSearch.Margin = new Padding(2);
             btnSearch.Name = "btnSearch";
             btnSearch.Size = new Size(65, 30);
@@ -122,7 +123,7 @@
             txtSearch.BackColor = Color.FromArgb(120, 195, 233);
             txtSearch.BorderStyle = BorderStyle.None;
             txtSearch.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtSearch.Location = new Point(1032, 112);
+            txtSearch.Location = new Point(1030, 179);
             txtSearch.Margin = new Padding(2);
             txtSearch.Name = "txtSearch";
             txtSearch.Size = new Size(350, 30);
@@ -136,7 +137,7 @@
             btnTambah.FlatStyle = FlatStyle.Flat;
             btnTambah.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnTambah.ForeColor = Color.SteelBlue;
-            btnTambah.Location = new Point(413, 112);
+            btnTambah.Location = new Point(411, 179);
             btnTambah.Margin = new Padding(2);
             btnTambah.Name = "btnTambah";
             btnTambah.Size = new Size(120, 40);
@@ -145,6 +146,17 @@
             btnTambah.UseVisualStyleBackColor = false;
             btnTambah.Click += btnTambah_Click;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Bahnschrift SemiBold", 20F, FontStyle.Bold);
+            label1.ForeColor = Color.FromArgb(19, 62, 135);
+            label1.Location = new Point(402, 95);
+            label1.Name = "label1";
+            label1.Size = new Size(269, 48);
+            label1.TabIndex = 19;
+            label1.Text = "DATA GEJALA";
+            // 
             // Gejala
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -152,6 +164,7 @@
             BackColor = Color.White;
             BackgroundImage = Properties.Resources.bg;
             ClientSize = new Size(1440, 1024);
+            Controls.Add(label1);
             Controls.Add(tbGejala);
             Controls.Add(btnSearch);
             Controls.Add(txtSearch);
@@ -176,5 +189,6 @@
         private DataGridViewTextBoxColumn nama_gejala;
         private DataGridViewButtonColumn btnUpdate;
         private DataGridViewButtonColumn btnDelete;
+        private Label label1;
     }
 }

@@ -41,6 +41,7 @@
             stock = new DataGridViewTextBoxColumn();
             btnUpdate = new DataGridViewButtonColumn();
             btnDelete = new DataGridViewButtonColumn();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)tbObat).BeginInit();
             SuspendLayout();
             // 
@@ -52,7 +53,7 @@
             btnTambah.FlatStyle = FlatStyle.Flat;
             btnTambah.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnTambah.ForeColor = Color.SteelBlue;
-            btnTambah.Location = new Point(400, 100);
+            btnTambah.Location = new Point(421, 178);
             btnTambah.Name = "btnTambah";
             btnTambah.Size = new Size(120, 40);
             btnTambah.TabIndex = 2;
@@ -65,7 +66,7 @@
             txtSearch.BackColor = Color.FromArgb(120, 195, 233);
             txtSearch.BorderStyle = BorderStyle.None;
             txtSearch.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtSearch.Location = new Point(1020, 100);
+            txtSearch.Location = new Point(1041, 178);
             txtSearch.Name = "txtSearch";
             txtSearch.Size = new Size(350, 30);
             txtSearch.TabIndex = 3;
@@ -76,7 +77,7 @@
             btnSearch.FlatStyle = FlatStyle.Flat;
             btnSearch.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnSearch.ForeColor = Color.SteelBlue;
-            btnSearch.Location = new Point(1305, 100);
+            btnSearch.Location = new Point(1326, 178);
             btnSearch.Name = "btnSearch";
             btnSearch.Size = new Size(65, 30);
             btnSearch.TabIndex = 4;
@@ -93,7 +94,7 @@
             tbObat.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             tbObat.Columns.AddRange(new DataGridViewColumn[] { ID, nama_obat, nama_kategori, harga, stock, btnUpdate, btnDelete });
             tbObat.GridColor = Color.FromArgb(120, 195, 233);
-            tbObat.Location = new Point(400, 170);
+            tbObat.Location = new Point(421, 248);
             tbObat.MultiSelect = false;
             tbObat.Name = "tbObat";
             tbObat.ReadOnly = true;
@@ -101,7 +102,7 @@
             tbObat.RowHeadersWidth = 62;
             tbObat.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             tbObat.ShowRowErrors = false;
-            tbObat.Size = new Size(970, 800);
+            tbObat.Size = new Size(970, 251);
             tbObat.TabIndex = 5;
             tbObat.CellClick += tbObat_CellClick;
             // 
@@ -165,6 +166,17 @@
             btnDelete.Text = "Delete";
             btnDelete.UseColumnTextForButtonValue = true;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Bahnschrift SemiBold", 20F, FontStyle.Bold);
+            label1.ForeColor = Color.FromArgb(19, 62, 135);
+            label1.Location = new Point(410, 102);
+            label1.Name = "label1";
+            label1.Size = new Size(220, 48);
+            label1.TabIndex = 19;
+            label1.Text = "DATA OBAT";
+            // 
             // Obat
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -172,6 +184,7 @@
             BackColor = Color.White;
             BackgroundImage = Properties.Resources.Desktop___9__2_;
             ClientSize = new Size(1440, 1024);
+            Controls.Add(label1);
             Controls.Add(tbObat);
             Controls.Add(btnSearch);
             Controls.Add(txtSearch);
@@ -197,5 +210,6 @@
         private DataGridViewTextBoxColumn stock;
         private DataGridViewButtonColumn btnUpdate;
         private DataGridViewButtonColumn btnDelete;
+        private Label label1;
     }
 }

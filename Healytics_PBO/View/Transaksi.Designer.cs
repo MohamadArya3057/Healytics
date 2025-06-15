@@ -35,6 +35,7 @@
             harga = new DataGridViewTextBoxColumn();
             jumlah = new DataGridViewTextBoxColumn();
             total = new DataGridViewTextBoxColumn();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)tbTransaksi).BeginInit();
             SuspendLayout();
             // 
@@ -47,7 +48,7 @@
             tbTransaksi.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             tbTransaksi.Columns.AddRange(new DataGridViewColumn[] { ID, tanggal, nama, harga, jumlah, total });
             tbTransaksi.GridColor = Color.FromArgb(120, 195, 233);
-            tbTransaksi.Location = new Point(412, 116);
+            tbTransaksi.Location = new Point(416, 203);
             tbTransaksi.MultiSelect = false;
             tbTransaksi.Name = "tbTransaksi";
             tbTransaksi.ReadOnly = true;
@@ -55,7 +56,7 @@
             tbTransaksi.RowHeadersWidth = 62;
             tbTransaksi.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             tbTransaksi.ShowRowErrors = false;
-            tbTransaksi.Size = new Size(970, 800);
+            tbTransaksi.Size = new Size(970, 229);
             tbTransaksi.TabIndex = 6;
             // 
             // ID
@@ -101,12 +102,24 @@
             total.Name = "total";
             total.ReadOnly = true;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Bahnschrift SemiBold", 20F, FontStyle.Bold);
+            label1.ForeColor = Color.FromArgb(19, 62, 135);
+            label1.Location = new Point(406, 115);
+            label1.Name = "label1";
+            label1.Size = new Size(231, 48);
+            label1.TabIndex = 19;
+            label1.Text = "TRANSAKSI";
+            // 
             // Transaksi
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.bg;
             ClientSize = new Size(1440, 1024);
+            Controls.Add(label1);
             Controls.Add(tbTransaksi);
             FormBorderStyle = FormBorderStyle.None;
             Name = "Transaksi";
@@ -114,6 +127,7 @@
             Load += Transaksi_Load;
             ((System.ComponentModel.ISupportInitialize)tbTransaksi).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -125,5 +139,6 @@
         private DataGridViewTextBoxColumn harga;
         private DataGridViewTextBoxColumn jumlah;
         private DataGridViewTextBoxColumn total;
+        private Label label1;
     }
 }

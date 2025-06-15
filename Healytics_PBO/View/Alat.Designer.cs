@@ -39,6 +39,7 @@
             btnSearch = new Button();
             txtSearch = new TextBox();
             btnTambah = new Button();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)tbAlat).BeginInit();
             SuspendLayout();
             // 
@@ -51,7 +52,7 @@
             tbAlat.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             tbAlat.Columns.AddRange(new DataGridViewColumn[] { ID, nama_alat, harga, btnUpdate, btnDelete });
             tbAlat.GridColor = Color.FromArgb(120, 195, 233);
-            tbAlat.Location = new Point(400, 170);
+            tbAlat.Location = new Point(411, 257);
             tbAlat.MultiSelect = false;
             tbAlat.Name = "tbAlat";
             tbAlat.ReadOnly = true;
@@ -59,7 +60,7 @@
             tbAlat.RowHeadersWidth = 62;
             tbAlat.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             tbAlat.ShowRowErrors = false;
-            tbAlat.Size = new Size(970, 800);
+            tbAlat.Size = new Size(970, 411);
             tbAlat.TabIndex = 9;
             tbAlat.CellClick += tbAlat_CellClick;
             // 
@@ -115,7 +116,7 @@
             btnSearch.FlatStyle = FlatStyle.Flat;
             btnSearch.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnSearch.ForeColor = Color.SteelBlue;
-            btnSearch.Location = new Point(1305, 100);
+            btnSearch.Location = new Point(1316, 187);
             btnSearch.Name = "btnSearch";
             btnSearch.Size = new Size(65, 30);
             btnSearch.TabIndex = 8;
@@ -128,7 +129,7 @@
             txtSearch.BackColor = Color.FromArgb(120, 195, 233);
             txtSearch.BorderStyle = BorderStyle.None;
             txtSearch.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtSearch.Location = new Point(1020, 100);
+            txtSearch.Location = new Point(1031, 187);
             txtSearch.Name = "txtSearch";
             txtSearch.Size = new Size(350, 30);
             txtSearch.TabIndex = 7;
@@ -141,7 +142,7 @@
             btnTambah.FlatStyle = FlatStyle.Flat;
             btnTambah.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnTambah.ForeColor = Color.SteelBlue;
-            btnTambah.Location = new Point(400, 100);
+            btnTambah.Location = new Point(411, 187);
             btnTambah.Name = "btnTambah";
             btnTambah.Size = new Size(120, 40);
             btnTambah.TabIndex = 6;
@@ -149,13 +150,25 @@
             btnTambah.UseVisualStyleBackColor = false;
             btnTambah.Click += btnTambah_Click;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Bahnschrift SemiBold", 20F, FontStyle.Bold);
+            label1.ForeColor = Color.FromArgb(19, 62, 135);
+            label1.Location = new Point(398, 101);
+            label1.Name = "label1";
+            label1.Size = new Size(218, 48);
+            label1.TabIndex = 19;
+            label1.Text = "DATA ALAT";
+            // 
             // Alat
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             BackgroundImage = Properties.Resources.bg;
-            ClientSize = new Size(1418, 968);
+            ClientSize = new Size(1440, 1024);
+            Controls.Add(label1);
             Controls.Add(tbAlat);
             Controls.Add(btnSearch);
             Controls.Add(txtSearch);
@@ -180,5 +193,6 @@
         private DataGridViewTextBoxColumn harga;
         private DataGridViewButtonColumn btnUpdate;
         private DataGridViewButtonColumn btnDelete;
+        private Label label1;
     }
 }

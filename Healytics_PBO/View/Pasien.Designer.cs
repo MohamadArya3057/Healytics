@@ -41,6 +41,7 @@
             btnSearch = new Button();
             txtSearch = new TextBox();
             btnTambah = new Button();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)tbPasien).BeginInit();
             SuspendLayout();
             // 
@@ -53,7 +54,7 @@
             tbPasien.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             tbPasien.Columns.AddRange(new DataGridViewColumn[] { ID, nama_pasien, umur, desa, riwayat, btnUpdate, btnDelete });
             tbPasien.GridColor = Color.FromArgb(120, 195, 233);
-            tbPasien.Location = new Point(423, 203);
+            tbPasien.Location = new Point(428, 267);
             tbPasien.MultiSelect = false;
             tbPasien.Name = "tbPasien";
             tbPasien.ReadOnly = true;
@@ -61,7 +62,7 @@
             tbPasien.RowHeadersWidth = 62;
             tbPasien.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             tbPasien.ShowRowErrors = false;
-            tbPasien.Size = new Size(970, 800);
+            tbPasien.Size = new Size(970, 453);
             tbPasien.TabIndex = 9;
             tbPasien.CellContentClick += tbPasien_CellContentClick;
             // 
@@ -133,7 +134,7 @@
             btnSearch.FlatStyle = FlatStyle.Flat;
             btnSearch.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnSearch.ForeColor = Color.SteelBlue;
-            btnSearch.Location = new Point(1328, 133);
+            btnSearch.Location = new Point(1333, 197);
             btnSearch.Name = "btnSearch";
             btnSearch.Size = new Size(65, 30);
             btnSearch.TabIndex = 8;
@@ -146,7 +147,7 @@
             txtSearch.BackColor = Color.FromArgb(120, 195, 233);
             txtSearch.BorderStyle = BorderStyle.None;
             txtSearch.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtSearch.Location = new Point(1043, 133);
+            txtSearch.Location = new Point(1048, 197);
             txtSearch.Name = "txtSearch";
             txtSearch.Size = new Size(350, 30);
             txtSearch.TabIndex = 7;
@@ -159,13 +160,24 @@
             btnTambah.FlatStyle = FlatStyle.Flat;
             btnTambah.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnTambah.ForeColor = Color.SteelBlue;
-            btnTambah.Location = new Point(423, 133);
+            btnTambah.Location = new Point(428, 197);
             btnTambah.Name = "btnTambah";
             btnTambah.Size = new Size(120, 40);
             btnTambah.TabIndex = 6;
             btnTambah.Text = "Add Data";
             btnTambah.UseVisualStyleBackColor = false;
             btnTambah.Click += btnTambah_Click;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Bahnschrift SemiBold", 20F, FontStyle.Bold);
+            label1.ForeColor = Color.FromArgb(19, 62, 135);
+            label1.Location = new Point(414, 113);
+            label1.Name = "label1";
+            label1.Size = new Size(260, 48);
+            label1.TabIndex = 18;
+            label1.Text = "DATA PASIEN";
             // 
             // Pasien
             // 
@@ -174,6 +186,7 @@
             BackColor = Color.White;
             BackgroundImage = Properties.Resources.bg;
             ClientSize = new Size(1440, 1024);
+            Controls.Add(label1);
             Controls.Add(tbPasien);
             Controls.Add(btnSearch);
             Controls.Add(txtSearch);
@@ -200,5 +213,6 @@
         private DataGridViewButtonColumn riwayat;
         private DataGridViewButtonColumn btnUpdate;
         private DataGridViewButtonColumn btnDelete;
+        private Label label1;
     }
 }
