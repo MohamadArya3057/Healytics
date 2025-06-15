@@ -48,6 +48,8 @@
             panelLogout = new Panel();
             btnLogout = new Button();
             laporanTransition = new System.Windows.Forms.Timer(components);
+            panelGejala = new Panel();
+            btnGejala = new Button();
             panelSide.SuspendLayout();
             panelPasien.SuspendLayout();
             panelObat.SuspendLayout();
@@ -58,6 +60,7 @@
             panelKunjungan.SuspendLayout();
             panelKeuangan.SuspendLayout();
             panelLogout.SuspendLayout();
+            panelGejala.SuspendLayout();
             SuspendLayout();
             // 
             // panelSide
@@ -66,6 +69,7 @@
             panelSide.Controls.Add(panelPasien);
             panelSide.Controls.Add(panelObat);
             panelSide.Controls.Add(panelAlat);
+            panelSide.Controls.Add(panelGejala);
             panelSide.Controls.Add(panelTransaksi);
             panelSide.Controls.Add(LaporanContainer);
             panelSide.Controls.Add(panelLogout);
@@ -143,7 +147,7 @@
             // panelTransaksi
             // 
             panelTransaksi.Controls.Add(btnTransaksi);
-            panelTransaksi.Location = new Point(3, 276);
+            panelTransaksi.Location = new Point(3, 367);
             panelTransaksi.Name = "panelTransaksi";
             panelTransaksi.Size = new Size(365, 85);
             panelTransaksi.TabIndex = 6;
@@ -168,7 +172,7 @@
             LaporanContainer.Controls.Add(panelLaporan);
             LaporanContainer.Controls.Add(panelKunjungan);
             LaporanContainer.Controls.Add(panelKeuangan);
-            LaporanContainer.Location = new Point(3, 367);
+            LaporanContainer.Location = new Point(3, 458);
             LaporanContainer.Name = "LaporanContainer";
             LaporanContainer.Size = new Size(365, 85);
             LaporanContainer.TabIndex = 7;
@@ -242,7 +246,7 @@
             // panelLogout
             // 
             panelLogout.Controls.Add(btnLogout);
-            panelLogout.Location = new Point(3, 458);
+            panelLogout.Location = new Point(3, 549);
             panelLogout.Name = "panelLogout";
             panelLogout.Size = new Size(365, 85);
             panelLogout.TabIndex = 5;
@@ -266,6 +270,28 @@
             laporanTransition.Interval = 10;
             laporanTransition.Tick += laporanTransition_Tick;
             // 
+            // panelGejala
+            // 
+            panelGejala.Controls.Add(btnGejala);
+            panelGejala.Location = new Point(3, 276);
+            panelGejala.Name = "panelGejala";
+            panelGejala.Size = new Size(365, 85);
+            panelGejala.TabIndex = 6;
+            // 
+            // btnGejala
+            // 
+            btnGejala.BackColor = Color.FromArgb(19, 62, 135);
+            btnGejala.Font = new Font("Bahnschrift SemiBold", 14F, FontStyle.Bold);
+            btnGejala.ForeColor = SystemColors.ButtonFace;
+            btnGejala.Location = new Point(-5, -12);
+            btnGejala.Name = "btnGejala";
+            btnGejala.Size = new Size(377, 102);
+            btnGejala.TabIndex = 1;
+            btnGejala.Text = "         GEJALA";
+            btnGejala.TextAlign = ContentAlignment.MiddleLeft;
+            btnGejala.UseVisualStyleBackColor = false;
+            btnGejala.Click += btnGejala_Click;
+            // 
             // SideBar
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -285,6 +311,7 @@
             panelKunjungan.ResumeLayout(false);
             panelKeuangan.ResumeLayout(false);
             panelLogout.ResumeLayout(false);
+            panelGejala.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -309,5 +336,7 @@
         private Panel panelTransaksi;
         private Button btnTransaksi;
         private System.Windows.Forms.Timer laporanTransition;
+        private Panel panelGejala;
+        private Button btnGejala;
     }
 }

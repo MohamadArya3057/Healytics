@@ -87,7 +87,6 @@ namespace Healytics_PBO.View
                 MessageBox.Show("Data Pasien berhasil diperbarui.", "Informasi");
             }
 
-            this.DialogResult = DialogResult.OK;
             this.Close();
         }
 

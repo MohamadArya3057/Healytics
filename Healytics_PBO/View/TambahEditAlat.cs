@@ -71,7 +71,6 @@ namespace Healytics_PBO.View
                 MessageBox.Show("Data Alat berhasil diperbarui.", "Informasi");
             }
 
-            this.DialogResult = DialogResult.OK;
             this.Close();
         }
 

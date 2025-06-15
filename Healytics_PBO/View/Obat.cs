@@ -61,8 +61,10 @@ namespace Healytics_PBO.View
                     ObatModel o = semuaObat.First(x => x.ID == id);
                     TambahEditObat form = new TambahEditObat("Update");
                     form.obat = o;
-                    form.ShowDialog();
-                    LoadData();
+                    form.MdiParent = this.MdiParent;
+                    form.Dock = DockStyle.Fill;
+                    form.FormClosed += (s, args) => LoadData();
+                    form.Show();
                 }
                 else if (tbObat.Columns[e.ColumnIndex].Name == "btnDelete")
                 {
@@ -81,6 +83,7 @@ namespace Healytics_PBO.View
             TambahEditObat form = new TambahEditObat("Tambah");
             form.MdiParent = this.MdiParent;
             form.Dock = DockStyle.Fill;
+            form.FormClosed += (s, args) => LoadData();
             form.Show();
         }
     }

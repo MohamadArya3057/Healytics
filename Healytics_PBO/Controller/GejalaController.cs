@@ -37,7 +37,8 @@ namespace Healytics_PBO.Controller
 
             NpgsqlCommand cmd = new NpgsqlCommand();
             cmd.Connection = conn;
-            cmd.CommandText = $"INSERT INTO gejala(nama_gejala) VALUES '{g.nama_gejala}'";
+            cmd.CommandText = $"INSERT INTO gejala(nama_gejala) VALUES ('{g.nama_gejala}')";
+
             cmd.ExecuteNonQuery();
             conn.Close();
         }

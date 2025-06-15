@@ -68,8 +68,6 @@ namespace Healytics_PBO.View
                 controller.Update(data);
                 MessageBox.Show("Data Gejala berhasil diperbarui.", "Informasi");
             }
-
-            this.DialogResult = DialogResult.OK;
             this.Close();
         }
 

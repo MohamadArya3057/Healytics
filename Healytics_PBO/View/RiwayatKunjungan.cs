@@ -12,20 +12,19 @@ namespace Healytics_PBO.View
         private RiwayatKunjunganController controller = new RiwayatKunjunganController();
         private List<RiwayatKunjunganModel> semuaKunjungan;
         private int idPasienFilter = -1;
+        private string nama_pasien;
+        private string nama_desa;
 
         public RiwayatKunjungan()
         {
             InitializeComponent();
         }
 
-        private string nama_pasien;
-        private string nama_desa;
-
         public RiwayatKunjungan(int no_register, string nama_pasien, string nama_desa) : this()
         {
             idPasienFilter = no_register;
-            nama_pasien = nama_pasien;
-            nama_desa = nama_desa;
+            this.nama_pasien = nama_pasien;
+            this.nama_desa = nama_desa;
 
             labelPasien.Text = "Nama: " + nama_pasien;
             labelDesa.Text = "Desa: " + nama_desa;
@@ -39,6 +38,7 @@ namespace Healytics_PBO.View
         private void LoadData()
         {
             semuaKunjungan = controller.GetAll();
+
             if (idPasienFilter != -1)
             {
                 semuaKunjungan = semuaKunjungan
@@ -47,37 +47,47 @@ namespace Healytics_PBO.View
             }
 
             dgKunjungan.Rows.Clear();
+
             foreach (var r in semuaKunjungan)
             {
-                dgKunjungan.Rows.Add(r.ID, r.tanggal.ToShortDateString(), r.catatan);
+                var gejalaList = controller.GetGejalaByRiwayat(r.ID).Select(g => g.nama_gejala);
+                var obatList = controller.GetObatByRiwayat(r.ID).Select(o => o.nama_obat);
+
+                dgKunjungan.Rows.Add(
+                    r.ID,
+                    r.tanggal.ToShortDateString(),
+                    r.catatan,
+                    string.Join(", ", gejalaList),
+                    string.Join(", ", obatList)
+                );
             }
+
             dgKunjungan.Height = dgKunjungan.ColumnHeadersHeight + (dgKunjungan.Rows.Count * dgKunjungan.RowTemplate.Height);
-            dgGejala.Height = dgGejala.ColumnHeadersHeight + (dgGejala.Rows.Count * dgGejala.RowTemplate.Height);
-            dgObat.Height = dgObat.ColumnHeadersHeight + (dgObat.Rows.Count * dgObat.RowTemplate.Height);
         }
 
-        private void dgKunjungan_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void dgKunjungan_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0 && e.RowIndex < semuaKunjungan.Count)
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
             {
-                int id = Convert.ToInt32(dgKunjungan.Rows[e.RowIndex].Cells["ID"].Value);
+                var selectedRow = dgKunjungan.Rows[e.RowIndex];
+                int id = Convert.ToInt32(selectedRow.Cells["ID"].Value);
                 var riwayat = semuaKunjungan.FirstOrDefault(r => r.ID == id);
 
-                if (riwayat != null)
+                if (dgKunjungan.Columns[e.ColumnIndex].Name == "btnUpdate" && riwayat != null)
                 {
-                    labelPasien.Text = "Nama: " + riwayat.nama_pasien;
-                    labelDesa.Text = "Desa: " + riwayat.nama_desa;
-
-                    dgGejala.Rows.Clear();
-                    foreach (var gejala in controller.GetGejalaByRiwayat(riwayat.ID))
+                    var form = new TambahEditRiwayat(riwayat, nama_pasien, nama_desa);
+                    form.MdiParent = this.MdiParent;
+                    form.Dock = DockStyle.Fill;
+                    form.FormClosed += (s, args) => LoadData();
+                    form.Show();
+                }
+                else if (dgKunjungan.Columns[e.ColumnIndex].Name == "btnDelete")
+                {
+                    var result = MessageBox.Show("Yakin ingin menghapus data ini?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (result == DialogResult.Yes)
                     {
-                        dgGejala.Rows.Add(gejala.nama_gejala);
-                    }
-
-                    dgObat.Rows.Clear();
-                    foreach (var obat in controller.GetObatByRiwayat(riwayat.ID))
-                    {
-                        dgObat.Rows.Add(obat.nama_obat);
+                        controller.Delete(id);
+                        LoadData();
                     }
                 }
             }
@@ -92,19 +102,34 @@ namespace Healytics_PBO.View
                 .ToList();
 
             dgKunjungan.Rows.Clear();
+
             foreach (var r in hasil)
             {
-                dgKunjungan.Rows.Add(r.ID, r.tanggal.ToShortDateString(), r.catatan);
+                var gejalaList = controller.GetGejalaByRiwayat(r.ID).Select(g => g.nama_gejala);
+                var obatList = controller.GetObatByRiwayat(r.ID).Select(o => o.nama_obat);
+
+                dgKunjungan.Rows.Add(
+                    r.ID,
+                    r.tanggal.ToShortDateString(),
+                    r.catatan,
+                    string.Join(", ", gejalaList),
+                    string.Join(", ", obatList)
+                );
             }
         }
 
         private void btnTambah_Click(object sender, EventArgs e)
         {
-            TambahEditRiwayat form = new TambahEditRiwayat(idPasienFilter, nama_pasien, nama_desa);
+            var form = new TambahEditRiwayat(idPasienFilter, nama_pasien, nama_desa);
             form.MdiParent = this.MdiParent;
             form.Dock = DockStyle.Fill;
+            form.FormClosed += (s, args) => LoadData();
             form.Show();
         }
 
+        private void btnKembali_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

@@ -15,6 +15,7 @@ namespace Healytics_PBO.View
         Pasien pasien;
         Obat obat;
         Alat alat;
+        Gejala gejala;
         Transaksi transaksi;
         LaporanKeuangan keuangan;
         LaporanKunjungan kunjungan;
@@ -194,6 +195,27 @@ namespace Healytics_PBO.View
                 loginForm.Show();
                 this.Close();
             }
+        }
+
+        private void btnGejala_Click(object sender, EventArgs e)
+        {
+            if (gejala == null)
+            {
+                gejala = new Gejala();
+                gejala.FormClosed += Gejala_FormClosed;
+                gejala.MdiParent = this;
+                gejala.Dock = DockStyle.Fill;
+                gejala.Show();
+            }
+            else
+            {
+                gejala.Activate();
+            }
+        }
+
+        private void Gejala_FormClosed(object? sender, FormClosedEventArgs e)
+        {
+            gejala = null;
         }
 
         private void SideBar_Load(object sender, EventArgs e)

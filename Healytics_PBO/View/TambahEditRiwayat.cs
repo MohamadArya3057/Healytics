@@ -13,14 +13,18 @@ namespace Healytics_PBO.View
         private string nama_pasien;
         private string nama_desa;
 
-        private readonly RiwayatKunjunganController controller = new RiwayatKunjunganController();
-        private readonly GejalaController gejalaController = new GejalaController();
-        private readonly ObatController obatController = new ObatController();
-        private readonly DetailRiwayatController detailRiwayatController = new DetailRiwayatController();
-        private readonly DetailTransaksiController detailTransaksiController = new DetailTransaksiController();
+        private RiwayatKunjunganController controller = new RiwayatKunjunganController();
+        private GejalaController gejalaController = new GejalaController();
+        private ObatController obatController = new ObatController();
+        private DetailRiwayatController detailRiwayatController = new DetailRiwayatController();
+        private TransaksiController transaksiController = new TransaksiController();
 
-        private List<GejalaModel> semuaGejala = new List<GejalaModel>();
-        private List<ObatModel> semuaObat = new List<ObatModel>();
+        private List<GejalaModel> semuaGejala;
+        private List<ObatModel> semuaObat;
+
+        private RiwayatKunjunganModel modelUpdate;
+
+        private bool isUpdate = false;
 
         public TambahEditRiwayat(int no_register, string nama_pasien, string nama_desa)
         {
@@ -28,36 +32,60 @@ namespace Healytics_PBO.View
             this.no_register = no_register;
             this.nama_pasien = nama_pasien;
             this.nama_desa = nama_desa;
-
+            this.Dock = DockStyle.Fill;
             this.Load += TambahEditRiwayat_Load;
             btnSimpan.Click += btnSimpan_Click;
-            btnBatal.Click += (s, e) => this.Close();
-
-            this.TopLevel = false;
-            this.Dock = DockStyle.Fill;
         }
 
-        private void TambahEditRiwayat_Load(object? sender, EventArgs e)
+        public TambahEditRiwayat(RiwayatKunjunganModel model, string nama_pasien, string nama_desa)
+        : this(model.no_register, nama_pasien, nama_desa)
+        {
+            this.modelUpdate = model;
+            this.isUpdate = true;
+        }
+
+        private void TambahEditRiwayat_Load(object sender, EventArgs e)
         {
             semuaGejala = gejalaController.GetAll();
+            semuaObat = obatController.GetAll();
+
             clbGejala.Items.Clear();
             foreach (var g in semuaGejala)
-                clbGejala.Items.Add(g, false);
+                clbGejala.Items.Add(g);
             clbGejala.DisplayMember = "nama_gejala";
 
-            semuaObat = obatController.GetAll();
-            var combo = dgvObat.Columns["colObat"] as DataGridViewComboBoxColumn;
-            if (combo != null)
-            {
-                combo.DataSource = semuaObat;
-                combo.DisplayMember = "nama_obat";
-                combo.ValueMember = "ID";
-            }
+            var combo = (DataGridViewComboBoxColumn)dgvObat.Columns["colObat"];
+            combo.DataSource = semuaObat;
+            combo.DisplayMember = "nama_obat";
+            combo.ValueMember = "ID";
 
-            dgvObat.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            if (isUpdate && modelUpdate != null)
+            {
+                dtTanggal.Value = modelUpdate.tanggal;
+                txtCatatan.Text = modelUpdate.catatan;
+
+                var selectedGejala = detailRiwayatController.GetByRiwayat(modelUpdate.ID)
+                                    .Select(d => d.id_gejala).ToHashSet();
+
+                for (int i = 0; i < clbGejala.Items.Count; i++)
+                {
+                    var g = clbGejala.Items[i] as GejalaModel;
+                    if (g != null && selectedGejala.Contains(g.ID))
+                        clbGejala.SetItemChecked(i, true);
+                }
+
+                var detailObat = transaksiController.GetDetailByTransaksi(
+                    transaksiController.GetAll()
+                        .FirstOrDefault(t => t.id_riwayat == modelUpdate.ID)?.ID ?? -1);
+
+                foreach (var dt in detailObat)
+                {
+                    dgvObat.Rows.Add(dt.id_obat, dt.jumlah);
+                }
+            }
         }
 
-        private void btnSimpan_Click(object? sender, EventArgs e)
+        private void btnSimpan_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtCatatan.Text))
             {
@@ -65,14 +93,25 @@ namespace Healytics_PBO.View
                 return;
             }
 
-            var riwayat = new RiwayatKunjunganModel
+            RiwayatKunjunganModel r = new RiwayatKunjunganModel
             {
                 tanggal = dtTanggal.Value,
                 no_register = no_register,
                 catatan = txtCatatan.Text
             };
 
-            int idRiwayat = controller.InsertReturnId(riwayat);
+            int idRiwayat;
+            if (isUpdate)
+            {
+                r.ID = modelUpdate.ID;
+                controller.Update(r);
+                detailRiwayatController.DeleteByRiwayat(r.ID);
+                idRiwayat = r.ID;
+            }
+            else
+            {
+                idRiwayat = controller.InsertReturnId(r);
+            }
 
             foreach (var item in clbGejala.CheckedItems)
             {
@@ -87,6 +126,9 @@ namespace Healytics_PBO.View
                 }
             }
 
+            List<DetailTransaksiModel> detailItems = new List<DetailTransaksiModel>();
+            decimal total = 0;
+
             foreach (DataGridViewRow row in dgvObat.Rows)
             {
                 if (row.IsNewRow) continue;
@@ -97,19 +139,35 @@ namespace Healytics_PBO.View
                 var obat = semuaObat.FirstOrDefault(o => o.ID == idObat);
                 if (obat == null) continue;
 
-                var dt = new DetailTransaksiModel
+                decimal subtotal = obat.harga * jumlah;
+                total += subtotal;
+
+                detailItems.Add(new DetailTransaksiModel
                 {
-                    id_transaksi = idRiwayat,
                     id_obat = idObat,
-                    nama_obat = obat.nama_obat,
-                    harga = obat.harga,
                     jumlah = jumlah,
+                    harga = obat.harga,
                     catatan = ""
-                };
-                detailTransaksiController.Insert(dt);
+                });
             }
 
-            MessageBox.Show("Riwayat kunjungan berhasil ditambahkan.", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (!isUpdate)
+            {
+                transaksiController.InsertReturnId(new TransaksiModel
+                {
+                    tanggal = dtTanggal.Value,
+                    id_riwayat = idRiwayat,
+                    total = total,
+                    DetailItems = detailItems
+                });
+            }
+
+            MessageBox.Show(isUpdate ? "Data berhasil diperbarui." : "Data berhasil ditambahkan.", "Informasi", MessageBoxButtons.OK);
+            this.Close();
+        }
+
+        private void btnBatal_Click(object sender, EventArgs e)
+        {
             this.Close();
         }
     }

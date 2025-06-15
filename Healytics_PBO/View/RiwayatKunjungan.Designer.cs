@@ -30,36 +30,21 @@
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             dgKunjungan = new DataGridView();
             ID = new DataGridViewTextBoxColumn();
             tanggal = new DataGridViewTextBoxColumn();
             catatan = new DataGridViewTextBoxColumn();
+            gejala_riwayat = new DataGridViewTextBoxColumn();
+            obat_riwayat = new DataGridViewTextBoxColumn();
             btnUpdate = new DataGridViewButtonColumn();
             btnDelete = new DataGridViewButtonColumn();
             btnSearch = new Button();
             txtSearch = new TextBox();
             btnTambah = new Button();
+            btnKembali = new Button();
             labelPasien = new Label();
             labelDesa = new Label();
-            groupBox1 = new GroupBox();
-            dgObat = new DataGridView();
-            dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
-            obat = new DataGridViewTextBoxColumn();
-            dataGridViewButtonColumn3 = new DataGridViewButtonColumn();
-            dataGridViewButtonColumn4 = new DataGridViewButtonColumn();
-            dgGejala = new DataGridView();
-            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
-            gejala = new DataGridViewTextBoxColumn();
-            dataGridViewButtonColumn1 = new DataGridViewButtonColumn();
-            dataGridViewButtonColumn2 = new DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)dgKunjungan).BeginInit();
-            groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgObat).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dgGejala).BeginInit();
             SuspendLayout();
             // 
             // dgKunjungan
@@ -69,7 +54,7 @@
             dgKunjungan.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgKunjungan.BackgroundColor = Color.FromArgb(184, 237, 248);
             dgKunjungan.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgKunjungan.Columns.AddRange(new DataGridViewColumn[] { ID, tanggal, catatan, btnUpdate, btnDelete });
+            dgKunjungan.Columns.AddRange(new DataGridViewColumn[] { ID, tanggal, catatan, gejala_riwayat, obat_riwayat, btnUpdate, btnDelete });
             dgKunjungan.GridColor = Color.FromArgb(120, 195, 233);
             dgKunjungan.Location = new Point(427, 288);
             dgKunjungan.MultiSelect = false;
@@ -103,6 +88,20 @@
             catatan.MinimumWidth = 8;
             catatan.Name = "catatan";
             catatan.ReadOnly = true;
+            // 
+            // gejala_riwayat
+            // 
+            gejala_riwayat.HeaderText = "Gejala";
+            gejala_riwayat.MinimumWidth = 8;
+            gejala_riwayat.Name = "gejala_riwayat";
+            gejala_riwayat.ReadOnly = true;
+            // 
+            // obat_riwayat
+            // 
+            obat_riwayat.HeaderText = "Obat";
+            obat_riwayat.MinimumWidth = 8;
+            obat_riwayat.Name = "obat_riwayat";
+            obat_riwayat.ReadOnly = true;
             // 
             // btnUpdate
             // 
@@ -167,152 +166,45 @@
             btnTambah.UseVisualStyleBackColor = false;
             btnTambah.Click += btnTambah_Click;
             // 
+            // btnKembali
+            // 
+            btnKembali.BackColor = Color.Gray;
+            btnKembali.FlatAppearance.BorderColor = Color.Gray;
+            btnKembali.FlatAppearance.BorderSize = 3;
+            btnKembali.FlatStyle = FlatStyle.Flat;
+            btnKembali.Font = new Font("Bahnschrift", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnKembali.ForeColor = SystemColors.ButtonFace;
+            btnKembali.Location = new Point(432, 465);
+            btnKembali.Name = "btnKembali";
+            btnKembali.Size = new Size(115, 45);
+            btnKembali.TabIndex = 18;
+            btnKembali.Text = "Kembali";
+            btnKembali.UseVisualStyleBackColor = false;
+            btnKembali.Click += btnKembali_Click;
+            // 
             // labelPasien
             // 
             labelPasien.AutoSize = true;
-            labelPasien.Location = new Point(427, 103);
+            labelPasien.BackColor = Color.White;
+            labelPasien.Font = new Font("Bahnschrift SemiBold", 12F, FontStyle.Bold);
+            labelPasien.ForeColor = Color.SteelBlue;
+            labelPasien.Location = new Point(427, 96);
             labelPasien.Name = "labelPasien";
-            labelPasien.Size = new Size(59, 25);
-            labelPasien.TabIndex = 10;
-            labelPasien.Text = "label1";
+            labelPasien.Size = new Size(84, 29);
+            labelPasien.TabIndex = 19;
+            labelPasien.Text = "Pasien";
             // 
             // labelDesa
             // 
             labelDesa.AutoSize = true;
-            labelDesa.Location = new Point(427, 154);
+            labelDesa.BackColor = Color.White;
+            labelDesa.Font = new Font("Bahnschrift SemiBold", 12F, FontStyle.Bold);
+            labelDesa.ForeColor = Color.SteelBlue;
+            labelDesa.Location = new Point(427, 145);
             labelDesa.Name = "labelDesa";
-            labelDesa.Size = new Size(59, 25);
-            labelDesa.TabIndex = 11;
-            labelDesa.Text = "label2";
-            // 
-            // groupBox1
-            // 
-            groupBox1.Controls.Add(dgObat);
-            groupBox1.Controls.Add(dgGejala);
-            groupBox1.Location = new Point(427, 457);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(970, 352);
-            groupBox1.TabIndex = 12;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "groupBox1";
-            // 
-            // dgObat
-            // 
-            dgObat.AllowUserToAddRows = false;
-            dgObat.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgObat.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            dgObat.BackgroundColor = Color.FromArgb(184, 237, 248);
-            dgObat.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgObat.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn4, obat, dataGridViewButtonColumn3, dataGridViewButtonColumn4 });
-            dgObat.GridColor = Color.FromArgb(120, 195, 233);
-            dgObat.Location = new Point(0, 199);
-            dgObat.MultiSelect = false;
-            dgObat.Name = "dgObat";
-            dgObat.ReadOnly = true;
-            dgObat.RowHeadersVisible = false;
-            dgObat.RowHeadersWidth = 62;
-            dgObat.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgObat.ShowRowErrors = false;
-            dgObat.Size = new Size(970, 132);
-            dgObat.TabIndex = 14;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            dataGridViewTextBoxColumn4.HeaderText = "ID Obat";
-            dataGridViewTextBoxColumn4.MinimumWidth = 8;
-            dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            dataGridViewTextBoxColumn4.ReadOnly = true;
-            dataGridViewTextBoxColumn4.Visible = false;
-            // 
-            // obat
-            // 
-            obat.HeaderText = "Obat";
-            obat.MinimumWidth = 8;
-            obat.Name = "obat";
-            obat.ReadOnly = true;
-            // 
-            // dataGridViewButtonColumn3
-            // 
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = Color.Khaki;
-            dataGridViewButtonColumn3.DefaultCellStyle = dataGridViewCellStyle3;
-            dataGridViewButtonColumn3.HeaderText = "Action";
-            dataGridViewButtonColumn3.MinimumWidth = 8;
-            dataGridViewButtonColumn3.Name = "dataGridViewButtonColumn3";
-            dataGridViewButtonColumn3.ReadOnly = true;
-            dataGridViewButtonColumn3.Text = "Update";
-            dataGridViewButtonColumn3.UseColumnTextForButtonValue = true;
-            // 
-            // dataGridViewButtonColumn4
-            // 
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = Color.FromArgb(255, 128, 128);
-            dataGridViewButtonColumn4.DefaultCellStyle = dataGridViewCellStyle4;
-            dataGridViewButtonColumn4.HeaderText = "";
-            dataGridViewButtonColumn4.MinimumWidth = 8;
-            dataGridViewButtonColumn4.Name = "dataGridViewButtonColumn4";
-            dataGridViewButtonColumn4.ReadOnly = true;
-            dataGridViewButtonColumn4.Text = "Delete";
-            dataGridViewButtonColumn4.UseColumnTextForButtonValue = true;
-            // 
-            // dgGejala
-            // 
-            dgGejala.AllowUserToAddRows = false;
-            dgGejala.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgGejala.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            dgGejala.BackgroundColor = Color.FromArgb(184, 237, 248);
-            dgGejala.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgGejala.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, gejala, dataGridViewButtonColumn1, dataGridViewButtonColumn2 });
-            dgGejala.GridColor = Color.FromArgb(120, 195, 233);
-            dgGejala.Location = new Point(0, 48);
-            dgGejala.MultiSelect = false;
-            dgGejala.Name = "dgGejala";
-            dgGejala.ReadOnly = true;
-            dgGejala.RowHeadersVisible = false;
-            dgGejala.RowHeadersWidth = 62;
-            dgGejala.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgGejala.ShowRowErrors = false;
-            dgGejala.Size = new Size(970, 132);
-            dgGejala.TabIndex = 13;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            dataGridViewTextBoxColumn1.HeaderText = "ID Gejala";
-            dataGridViewTextBoxColumn1.MinimumWidth = 8;
-            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            dataGridViewTextBoxColumn1.ReadOnly = true;
-            dataGridViewTextBoxColumn1.Visible = false;
-            // 
-            // gejala
-            // 
-            gejala.HeaderText = "Gejala";
-            gejala.MinimumWidth = 8;
-            gejala.Name = "gejala";
-            gejala.ReadOnly = true;
-            // 
-            // dataGridViewButtonColumn1
-            // 
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = Color.Khaki;
-            dataGridViewButtonColumn1.DefaultCellStyle = dataGridViewCellStyle5;
-            dataGridViewButtonColumn1.HeaderText = "Action";
-            dataGridViewButtonColumn1.MinimumWidth = 8;
-            dataGridViewButtonColumn1.Name = "dataGridViewButtonColumn1";
-            dataGridViewButtonColumn1.ReadOnly = true;
-            dataGridViewButtonColumn1.Text = "Update";
-            dataGridViewButtonColumn1.UseColumnTextForButtonValue = true;
-            // 
-            // dataGridViewButtonColumn2
-            // 
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = Color.FromArgb(255, 128, 128);
-            dataGridViewButtonColumn2.DefaultCellStyle = dataGridViewCellStyle6;
-            dataGridViewButtonColumn2.HeaderText = "";
-            dataGridViewButtonColumn2.MinimumWidth = 8;
-            dataGridViewButtonColumn2.Name = "dataGridViewButtonColumn2";
-            dataGridViewButtonColumn2.ReadOnly = true;
-            dataGridViewButtonColumn2.Text = "Delete";
-            dataGridViewButtonColumn2.UseColumnTextForButtonValue = true;
+            labelDesa.Size = new Size(67, 29);
+            labelDesa.TabIndex = 20;
+            labelDesa.Text = "Desa";
             // 
             // RiwayatKunjungan
             // 
@@ -321,9 +213,9 @@
             BackColor = Color.White;
             BackgroundImage = Properties.Resources.bg;
             ClientSize = new Size(1440, 1024);
-            Controls.Add(groupBox1);
             Controls.Add(labelDesa);
             Controls.Add(labelPasien);
+            Controls.Add(btnKembali);
             Controls.Add(dgKunjungan);
             Controls.Add(btnSearch);
             Controls.Add(txtSearch);
@@ -332,9 +224,6 @@
             Name = "RiwayatKunjungan";
             Text = "RiwayatKunjungan";
             ((System.ComponentModel.ISupportInitialize)dgKunjungan).EndInit();
-            groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dgObat).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dgGejala).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -342,26 +231,18 @@
         #endregion
 
         private DataGridView dgKunjungan;
-        private DataGridViewTextBoxColumn ID;
-        private DataGridViewTextBoxColumn tanggal;
-        private DataGridViewTextBoxColumn catatan;
-        private DataGridViewButtonColumn btnUpdate;
-        private DataGridViewButtonColumn btnDelete;
         private Button btnSearch;
         private TextBox txtSearch;
         private Button btnTambah;
+        private Button btnKembali;
         private Label labelPasien;
         private Label labelDesa;
-        private GroupBox groupBox1;
-        private DataGridView dgObat;
-        private DataGridView dgGejala;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private DataGridViewTextBoxColumn obat;
-        private DataGridViewButtonColumn dataGridViewButtonColumn3;
-        private DataGridViewButtonColumn dataGridViewButtonColumn4;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private DataGridViewTextBoxColumn gejala;
-        private DataGridViewButtonColumn dataGridViewButtonColumn1;
-        private DataGridViewButtonColumn dataGridViewButtonColumn2;
+        private DataGridViewTextBoxColumn ID;
+        private DataGridViewTextBoxColumn tanggal;
+        private DataGridViewTextBoxColumn catatan;
+        private DataGridViewTextBoxColumn gejala_riwayat;
+        private DataGridViewTextBoxColumn obat_riwayat;
+        private DataGridViewButtonColumn btnUpdate;
+        private DataGridViewButtonColumn btnDelete;
     }
 }

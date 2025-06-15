@@ -61,8 +61,10 @@ namespace Healytics_PBO.View
                     GejalaModel gejala = semuaGejala.First(x => x.ID == id);
                     TambahEditGejala form = new TambahEditGejala("Update");
                     form.gejala = gejala;
-                    form.ShowDialog();
-                    LoadData();
+                    form.MdiParent = this.MdiParent;
+                    form.Dock = DockStyle.Fill;
+                    form.FormClosed += (s, args) => LoadData();
+                    form.Show();
                 }
                 else if (tbGejala.Columns[e.ColumnIndex].Name == "btnDelete")
                 {
@@ -81,6 +83,7 @@ namespace Healytics_PBO.View
             TambahEditGejala form = new TambahEditGejala("Tambah");
             form.MdiParent = this.MdiParent;
             form.Dock = DockStyle.Fill;
+            form.FormClosed += (s, args) => LoadData();
             form.Show();
         }
     }

@@ -1,20 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Healytics_PBO.Model;
 using Healytics_PBO.Controller;
+using Healytics_PBO.Model;
 
 namespace Healytics_PBO.View
 {
     public partial class Transaksi : Form
     {
         private IRepository<TransaksiModel> controller;
+
         public Transaksi()
         {
             InitializeComponent();
@@ -24,34 +21,18 @@ namespace Healytics_PBO.View
             tbTransaksi.CellContentClick += TbTransaksi_CellContentClick;
         }
 
+        private void Transaksi_Load(object sender, EventArgs e)
+        {
+            LoadData();
+        }
+
         private void TbTransaksi_CellContentClick(object? sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
 
-            var id = Convert.ToInt32(tbTransaksi.Rows[e.RowIndex].Cells["Id"].Value);
+            var id = Convert.ToInt32(tbTransaksi.Rows[e.RowIndex].Cells["ID"].Value);
 
-            if (tbTransaksi.Columns[e.ColumnIndex].Name == "Update")
-            {
-                string keluhan = tbTransaksi.Rows[e.RowIndex].Cells["Keluhan"].Value.ToString();
-                int jumlah = Convert.ToInt32(tbTransaksi.Rows[e.RowIndex].Cells["Jumlah"].Value);
-                decimal total = Convert.ToDecimal(tbTransaksi.Rows[e.RowIndex].Cells["Total"].Value);
-
-                if (MessageBox.Show("Update data ini?", "Konfirmasi", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                {
-                    var updatedModel = new TransaksiModel
-                    {
-                        ID = id,
-                        // isikan properti yang kamu butuhkan, misal:
-                        // Catatan = keluhan, // jika ada
-                        // Jumlah = jumlah, // jika ada
-                        // TotalBiaya = total, // jika ada
-                    };
-
-                    controller.Update(updatedModel);
-                    LoadData();
-                }
-            }
-            else if (tbTransaksi.Columns[e.ColumnIndex].Name == "Delete")
+            if (tbTransaksi.Columns[e.ColumnIndex].Name == "DeleteButton")
             {
                 if (MessageBox.Show("Apakah anda yakin ingin menghapus data ini?", "Konfirmasi", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
@@ -61,35 +42,32 @@ namespace Healytics_PBO.View
             }
         }
 
-        private void Transaksi_Load(object sender, EventArgs e)
-        {
-            LoadData();
-        }
-
         private void LoadData()
         {
             var data = controller.GetAll();
             tbTransaksi.DataSource = null;
             tbTransaksi.Columns.Clear();
-            tbTransaksi.DataSource = data;
 
-            var updateButton = new DataGridViewButtonColumn
-            {
-                Name = "UpdateButton",
-                HeaderText = "",
-                Text = "Update",
-                UseColumnTextForButtonValue = true
-            };
-            tbTransaksi.Columns.Add(updateButton);
+            tbTransaksi.AutoGenerateColumns = false;
+            tbTransaksi.Columns.Add(new DataGridViewTextBoxColumn { Name = "ID", DataPropertyName = "ID", Visible = false });
+            tbTransaksi.Columns.Add(new DataGridViewTextBoxColumn { Name = "Tanggal", HeaderText = "Tanggal", DataPropertyName = "tanggal", AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill });
+            tbTransaksi.Columns.Add(new DataGridViewTextBoxColumn { Name = "Pasien", HeaderText = "Nama Pasien", DataPropertyName = "nama_pasien", AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill });
+            tbTransaksi.Columns.Add(new DataGridViewTextBoxColumn { Name = "Harga", HeaderText = "Harga", DataPropertyName = "harga", AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells });
+            tbTransaksi.Columns.Add(new DataGridViewTextBoxColumn { Name = "Jumlah", HeaderText = "Jumlah", DataPropertyName = "jumlah", AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells });
+            tbTransaksi.Columns.Add(new DataGridViewTextBoxColumn { Name = "Total", HeaderText = "Total", DataPropertyName = "total", AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells });
 
             var deleteButton = new DataGridViewButtonColumn
             {
                 Name = "DeleteButton",
-                HeaderText = "",
+                HeaderText = "Action",
                 Text = "Delete",
                 UseColumnTextForButtonValue = true
             };
             tbTransaksi.Columns.Add(deleteButton);
+
+            tbTransaksi.DataSource = data;
+
+            tbTransaksi.Height = tbTransaksi.ColumnHeadersHeight + tbTransaksi.Rows.Count * tbTransaksi.RowTemplate.Height + 10;
         }
     }
 }

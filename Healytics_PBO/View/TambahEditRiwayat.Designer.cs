@@ -76,6 +76,7 @@
             // 
             colObat.DataPropertyName = "id_obat";
             colObat.DataSource = obatModelBindingSource;
+            colObat.DisplayMember = "nama_obat";
             colObat.HeaderText = "Obat";
             colObat.MinimumWidth = 8;
             colObat.Name = "colObat";
@@ -174,6 +175,7 @@
             btnBatal.TabIndex = 17;
             btnBatal.Text = "Batal";
             btnBatal.UseVisualStyleBackColor = false;
+            btnBatal.Click += btnBatal_Click;
             // 
             // btnSimpan
             // 
@@ -231,8 +233,6 @@
         private DateTimePicker dtTanggal;
         private DataGridView dgvObat;
         private BindingSource obatModelBindingSource;
-        private DataGridViewComboBoxColumn colObat;
-        private DataGridViewTextBoxColumn colJumlah;
         private Label label1;
         private Label lblTanggal;
         private Label lblCatatan;
@@ -242,5 +242,7 @@
         private Button btnBatal;
         private Button btnSimpan;
         private CheckedListBox clbGejala;
+        private DataGridViewComboBoxColumn colObat;
+        private DataGridViewTextBoxColumn colJumlah;
     }
 }

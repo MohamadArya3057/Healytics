@@ -49,14 +49,6 @@ namespace Healytics_PBO.View
             TampilkanData(hasil);
         }
 
-        private void btnTambah_Click(object sender, EventArgs e)
-        {
-            TambahEditPasien form = new TambahEditPasien("Tambah");
-            form.MdiParent = this.MdiParent;
-            form.Dock = DockStyle.Fill;
-            form.Show();
-        }
-
         private void tbPasien_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -68,8 +60,10 @@ namespace Healytics_PBO.View
                 {
                     TambahEditPasien form = new TambahEditPasien("Update");
                     form.pasien = pasien;
-                    form.ShowDialog();
-                    LoadData();
+                    form.MdiParent = this.MdiParent;
+                    form.Dock = DockStyle.Fill;
+                    form.FormClosed += (s, args) => LoadData();
+                    form.Show();
                 }
                 else if (tbPasien.Columns[e.ColumnIndex].Name == "btnDelete")
                 {
@@ -87,10 +81,20 @@ namespace Healytics_PBO.View
                         RiwayatKunjungan form = new RiwayatKunjungan(pasien.ID, pasien.nama_pasien, pasien.nama_desa);
                         form.MdiParent = this.MdiParent;
                         form.Dock = DockStyle.Fill;
+                        form.FormClosed += (s, args) => LoadData();
                         form.Show();
                     }
                 }
             }
+        }
+
+        private void btnTambah_Click(object sender, EventArgs e)
+        {
+            TambahEditPasien form = new TambahEditPasien("Tambah");
+            form.MdiParent = this.MdiParent;
+            form.Dock = DockStyle.Fill;
+            form.FormClosed += (s, args) => LoadData();
+            form.Show();
         }
     }
 }
