@@ -47,14 +47,12 @@ namespace Healytics_PBO.Controller
             using var conn = new NpgsqlConnection(connectionString);
             conn.Open();
 
-            string query = @"
-            INSERT INTO detail_riwayat(id_riwayat, id_gejala, id_obat)
-            VALUES (@id_riwayat, @id_gejala, @id_obat)";
+            string query = @"INSERT INTO detail_riwayat(id_riwayat, id_gejala, id_obat) VALUES (@id_riwayat, @id_gejala, @id_obat)";
 
             using var cmd = new NpgsqlCommand(query, conn);
             cmd.Parameters.AddWithValue("@id_riwayat", d.id_riwayat);
             cmd.Parameters.AddWithValue("@id_gejala", d.id_gejala);
-            cmd.Parameters.AddWithValue("@id_obat", d.id_obat.Value);
+            cmd.Parameters.AddWithValue("@id_obat", d.id_obat.Value); // .Value karena nullable int?
 
             cmd.ExecuteNonQuery();
         }

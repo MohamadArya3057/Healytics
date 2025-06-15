@@ -117,12 +117,21 @@ namespace Healytics_PBO.View
             {
                 if (item is GejalaModel g)
                 {
-                    var detail = new DetailRiwayatModel
+                    foreach (DataGridViewRow row in dgvObat.Rows)
                     {
-                        id_riwayat = idRiwayat,
-                        id_gejala = g.ID
-                    };
-                    detailRiwayatController.Insert(detail);
+                        if (row.IsNewRow) continue;
+                        if (row.Cells["colObat"].Value == null) continue;
+
+                            int idObat = Convert.ToInt32(row.Cells["colObat"].Value);
+
+                        var detail = new DetailRiwayatModel
+                        {
+                            id_riwayat = idRiwayat,
+                            id_gejala = g.ID,
+                            id_obat = idObat
+                        };
+                        detailRiwayatController.Insert(detail);
+                    }
                 }
             }
 

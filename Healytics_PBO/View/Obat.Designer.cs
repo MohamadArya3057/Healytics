@@ -37,8 +37,8 @@
             ID = new DataGridViewTextBoxColumn();
             nama_obat = new DataGridViewTextBoxColumn();
             nama_kategori = new DataGridViewTextBoxColumn();
-            stock = new DataGridViewTextBoxColumn();
             harga = new DataGridViewTextBoxColumn();
+            stock = new DataGridViewTextBoxColumn();
             btnUpdate = new DataGridViewButtonColumn();
             btnDelete = new DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)tbObat).BeginInit();
@@ -91,7 +91,7 @@
             tbObat.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             tbObat.BackgroundColor = Color.FromArgb(184, 237, 248);
             tbObat.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            tbObat.Columns.AddRange(new DataGridViewColumn[] { ID, nama_obat, nama_kategori, stock, harga, btnUpdate, btnDelete });
+            tbObat.Columns.AddRange(new DataGridViewColumn[] { ID, nama_obat, nama_kategori, harga, stock, btnUpdate, btnDelete });
             tbObat.GridColor = Color.FromArgb(120, 195, 233);
             tbObat.Location = new Point(400, 170);
             tbObat.MultiSelect = false;
@@ -127,19 +127,19 @@
             nama_kategori.Name = "nama_kategori";
             nama_kategori.ReadOnly = true;
             // 
-            // stock
-            // 
-            stock.HeaderText = "Harga";
-            stock.MinimumWidth = 8;
-            stock.Name = "stock";
-            stock.ReadOnly = true;
-            // 
             // harga
             // 
-            harga.HeaderText = "Stok";
+            harga.HeaderText = "Harga";
             harga.MinimumWidth = 8;
             harga.Name = "harga";
             harga.ReadOnly = true;
+            // 
+            // stock
+            // 
+            stock.HeaderText = "Stok";
+            stock.MinimumWidth = 8;
+            stock.Name = "stock";
+            stock.ReadOnly = true;
             // 
             // btnUpdate
             // 
@@ -193,8 +193,8 @@
         private DataGridViewTextBoxColumn ID;
         private DataGridViewTextBoxColumn nama_obat;
         private DataGridViewTextBoxColumn nama_kategori;
-        private DataGridViewTextBoxColumn stock;
         private DataGridViewTextBoxColumn harga;
+        private DataGridViewTextBoxColumn stock;
         private DataGridViewButtonColumn btnUpdate;
         private DataGridViewButtonColumn btnDelete;
     }

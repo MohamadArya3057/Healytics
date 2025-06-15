@@ -152,33 +152,39 @@ WHERE d.id_riwayat = @id";
         public List<DetailTransaksiModel> GetObatByRiwayat(int id_riwayat)
         {
             List<DetailTransaksiModel> list = new List<DetailTransaksiModel>();
-            using (var conn = new NpgsqlConnection("Host=localhost;Username=postgres;Password=120306;Database=Healytics;port=5432"))
-            {
-                conn.Open();
-                var cmd = new NpgsqlCommand();
-                cmd.Connection = conn;
-                cmd.CommandText = @"SELECT d.id_detail_transaksi, d.id_transaksi, d.id_obat, o.nama_obat, d.jumlah
-FROM detail_transaksi d
-JOIN obat o ON d.id_obat = o.id_obat
-WHERE d.id_transaksi = @id";
-                cmd.Parameters.AddWithValue("@id", id_riwayat); // disesuaikan jika id_riwayat != id_transaksi
 
-                using (var reader = cmd.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        list.Add(new DetailTransaksiModel
-                        {
-                            ID = reader.GetInt32(0),
-                            id_transaksi = reader.GetInt32(1),
-                            id_obat = reader.GetInt32(2),
-                            nama_obat = reader.GetString(3),
-                            jumlah = reader.GetInt32(4)
-                        });
-                    }
-                }
+            using var conn = new NpgsqlConnection("Host=localhost;Username=postgres;Password=120306;Database=Healytics;port=5432");
+            conn.Open();
+
+            int id_transaksi = -1;
+            using (var cmdTransaksi = new NpgsqlCommand("SELECT id_transaksi FROM transaksi WHERE id_riwayat = @id_riwayat", conn))
+            {
+                cmdTransaksi.Parameters.AddWithValue("@id_riwayat", id_riwayat);
+                var result = cmdTransaksi.ExecuteScalar();
+                if (result == null) return list;
+                id_transaksi = Convert.ToInt32(result);
             }
+
+            var cmd = new NpgsqlCommand(@"SELECT dt.id_detail_transaksi, dt.id_transaksi, dt.id_obat, o.nama_obat, dt.jumlah
+                                   FROM detail_transaksi dt
+                                   JOIN obat o ON dt.id_obat = o.id_obat
+                                   WHERE dt.id_transaksi = @id", conn);
+            cmd.Parameters.AddWithValue("@id", id_transaksi);
+            using var reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                list.Add(new DetailTransaksiModel
+                {
+                    ID = reader.GetInt32(0),
+                    id_transaksi = reader.GetInt32(1),
+                    id_obat = reader.GetInt32(2),
+                    nama_obat = reader.GetString(3),
+                    jumlah = reader.GetInt32(4)
+                });
+            }
+
             return list;
         }
+
     }
 }

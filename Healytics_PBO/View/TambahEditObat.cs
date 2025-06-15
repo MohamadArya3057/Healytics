@@ -70,8 +70,8 @@ namespace Healytics_PBO.View
             ObatModel data = new ObatModel
             {
                 nama_obat = txtNamaObat.Text,
-                stock = int.Parse(txtHarga.Text),
-                harga = decimal.Parse(txtStok.Text),
+                stock = int.Parse(txtStok.Text),
+                harga = decimal.Parse(txtHarga.Text),
                 id_kategori = (int)comboKategori.SelectedValue
             };
 
