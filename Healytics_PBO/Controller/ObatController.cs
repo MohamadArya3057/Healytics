@@ -57,7 +57,13 @@ namespace Healytics_PBO.Controller
 
             NpgsqlCommand cmd = new NpgsqlCommand();
             cmd.Connection = conn;
-            cmd.CommandText = $"UPDATE obat SET nama_obat = '{o.nama_obat}', id_kategori = {o.id_kategori}, harga = {o.harga}, stock = {o.stock} WHERE id_obat = {o.ID}";
+            cmd.CommandText = "UPDATE obat SET nama_obat = @nama_obat, id_kategori = @id_kategori, harga = @harga, stock = @stock WHERE id_obat = @id_obat";
+
+            cmd.Parameters.AddWithValue("@nama_obat", o.nama_obat);
+            cmd.Parameters.AddWithValue("@id_kategori", o.id_kategori);
+            cmd.Parameters.AddWithValue("@harga", o.harga);
+            cmd.Parameters.AddWithValue("@stock", o.stock);
+            cmd.Parameters.AddWithValue("@id_obat", o.ID);
 
             cmd.ExecuteNonQuery();
             conn.Close();
