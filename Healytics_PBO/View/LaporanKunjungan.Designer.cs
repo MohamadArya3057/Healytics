@@ -38,7 +38,7 @@
             // 
             // txtSearch
             // 
-            txtSearch.Location = new Point(1198, 79);
+            txtSearch.Location = new Point(1214, 87);
             txtSearch.Margin = new Padding(2, 2, 2, 2);
             txtSearch.Name = "txtSearch";
             txtSearch.PlaceholderText = "Cari Nama Pasien";
@@ -47,7 +47,7 @@
             // 
             // btnSearch
             // 
-            btnSearch.Location = new Point(1323, 79);
+            btnSearch.Location = new Point(1339, 87);
             btnSearch.Margin = new Padding(2, 2, 2, 2);
             btnSearch.Name = "btnSearch";
             btnSearch.Size = new Size(64, 25);
@@ -58,7 +58,7 @@
             // 
             // txtTanggal
             // 
-            txtTanggal.Location = new Point(404, 124);
+            txtTanggal.Location = new Point(384, 118);
             txtTanggal.Margin = new Padding(2, 2, 2, 2);
             txtTanggal.Name = "txtTanggal";
             txtTanggal.PlaceholderText = "Tanggal";
@@ -67,7 +67,7 @@
             // 
             // txtNama
             // 
-            txtNama.Location = new Point(584, 125);
+            txtNama.Location = new Point(584, 118);
             txtNama.Margin = new Padding(2, 2, 2, 2);
             txtNama.Name = "txtNama";
             txtNama.PlaceholderText = "Nama Pasien";
@@ -76,7 +76,7 @@
             // 
             // txtDesa
             // 
-            txtDesa.Location = new Point(756, 126);
+            txtDesa.Location = new Point(793, 120);
             txtDesa.Margin = new Padding(2, 2, 2, 2);
             txtDesa.Name = "txtDesa";
             txtDesa.PlaceholderText = "Desa";
@@ -85,7 +85,7 @@
             // 
             // txtKeterangan
             // 
-            txtKeterangan.Location = new Point(963, 125);
+            txtKeterangan.Location = new Point(995, 120);
             txtKeterangan.Margin = new Padding(2, 2, 2, 2);
             txtKeterangan.Name = "txtKeterangan";
             txtKeterangan.PlaceholderText = "Keterangan";
@@ -94,7 +94,7 @@
             // 
             // txtKeluhan
             // 
-            txtKeluhan.Location = new Point(1145, 126);
+            txtKeluhan.Location = new Point(1182, 118);
             txtKeluhan.Margin = new Padding(2, 2, 2, 2);
             txtKeluhan.Name = "txtKeluhan";
             txtKeluhan.PlaceholderText = "Keluhan";
@@ -103,7 +103,7 @@
             // 
             // btnTambah
             // 
-            btnTambah.Location = new Point(1293, 126);
+            btnTambah.Location = new Point(1323, 120);
             btnTambah.Margin = new Padding(2, 2, 2, 2);
             btnTambah.Name = "btnTambah";
             btnTambah.Size = new Size(80, 25);
@@ -119,13 +119,13 @@
             dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgv.BackgroundColor = Color.FromArgb(184, 237, 248);
             dgv.ColumnHeadersHeight = 29;
-            dgv.Location = new Point(389, 170);
+            dgv.Location = new Point(384, 149);
             dgv.Margin = new Padding(2, 2, 2, 2);
             dgv.Name = "dgv";
             dgv.ReadOnly = true;
             dgv.RowHeadersVisible = false;
             dgv.RowHeadersWidth = 51;
-            dgv.Size = new Size(1010, 843);
+            dgv.Size = new Size(1019, 864);
             dgv.TabIndex = 8;
             // 
             // LaporanKunjungan
