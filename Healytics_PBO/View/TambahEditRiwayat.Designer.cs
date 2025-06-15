@@ -189,6 +189,7 @@
             btnSimpan.Name = "btnSimpan";
             btnSimpan.Size = new Size(120, 45);
             btnSimpan.TabIndex = 16;
+            btnSimpan.Text = "Simpan";
             btnSimpan.UseVisualStyleBackColor = false;
             // 
             // clbGejala

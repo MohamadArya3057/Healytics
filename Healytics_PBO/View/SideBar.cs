@@ -32,33 +32,6 @@ namespace Healytics_PBO.View
 
         bool laporanExpand = false;
 
-        private void laporanTransition_Tick(object sender, EventArgs e)
-        {
-            if (laporanExpand == false)
-            {
-                LaporanContainer.Height += 10;
-                if (LaporanContainer.Height >= 270)
-                {
-                    laporanTransition.Stop();
-                    laporanExpand = true;
-                }
-            }
-            else
-            {
-                LaporanContainer.Height -= 10;
-                if (LaporanContainer.Height <= 85)
-                {
-                    laporanTransition.Stop();
-                    laporanExpand = false;
-                }
-            }
-        }
-
-        private void btnLaporan_Click(object sender, EventArgs e)
-        {
-            laporanTransition.Start();
-        }
-
         private void btnPasien_Click(object sender, EventArgs e)
         {
             if (pasien == null)
