@@ -74,6 +74,13 @@ namespace Healytics_PBO.View
 
             tbTransaksi.AutoGenerateColumns = false;
 
+            tbTransaksi.Columns.Add(new DataGridViewTextBoxColumn { Name = "ID", DataPropertyName = "ID", Visible = false });
+            tbTransaksi.Columns.Add(new DataGridViewTextBoxColumn { Name = "Tanggal", HeaderText = "Tanggal", DataPropertyName = "tanggal", AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill });
+            tbTransaksi.Columns.Add(new DataGridViewTextBoxColumn { Name = "Pasien", HeaderText = "Nama Pasien", DataPropertyName = "nama_pasien", AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill });
+            tbTransaksi.Columns.Add(new DataGridViewTextBoxColumn { Name = "Harga", HeaderText = "Harga", DataPropertyName = "harga", AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells });
+            tbTransaksi.Columns.Add(new DataGridViewTextBoxColumn { Name = "Jumlah", HeaderText = "Jumlah", DataPropertyName = "jumlah", AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells });
+            tbTransaksi.Columns.Add(new DataGridViewTextBoxColumn { Name = "Total", HeaderText = "Total", DataPropertyName = "total", AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells });
+
             tbTransaksi.DataSource = data;
 
             tbTransaksi.Height = tbTransaksi.ColumnHeadersHeight + tbTransaksi.Rows.Count * tbTransaksi.RowTemplate.Height + 10;

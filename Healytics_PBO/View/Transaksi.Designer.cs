@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             tbTransaksi = new DataGridView();
             ID = new DataGridViewTextBoxColumn();
             tanggal = new DataGridViewTextBoxColumn();
@@ -37,8 +35,6 @@
             harga = new DataGridViewTextBoxColumn();
             jumlah = new DataGridViewTextBoxColumn();
             total = new DataGridViewTextBoxColumn();
-            btnUpdate = new DataGridViewButtonColumn();
-            btnDelete = new DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)tbTransaksi).BeginInit();
             SuspendLayout();
             // 
@@ -49,7 +45,7 @@
             tbTransaksi.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             tbTransaksi.BackgroundColor = Color.FromArgb(184, 237, 248);
             tbTransaksi.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            tbTransaksi.Columns.AddRange(new DataGridViewColumn[] { ID, tanggal, nama, harga, jumlah, total, btnUpdate, btnDelete });
+            tbTransaksi.Columns.AddRange(new DataGridViewColumn[] { ID, tanggal, nama, harga, jumlah, total });
             tbTransaksi.GridColor = Color.FromArgb(120, 195, 233);
             tbTransaksi.Location = new Point(412, 116);
             tbTransaksi.MultiSelect = false;
@@ -105,30 +101,6 @@
             total.Name = "total";
             total.ReadOnly = true;
             // 
-            // btnUpdate
-            // 
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = Color.Khaki;
-            btnUpdate.DefaultCellStyle = dataGridViewCellStyle3;
-            btnUpdate.HeaderText = "Action";
-            btnUpdate.MinimumWidth = 8;
-            btnUpdate.Name = "btnUpdate";
-            btnUpdate.ReadOnly = true;
-            btnUpdate.Text = "Update";
-            btnUpdate.UseColumnTextForButtonValue = true;
-            // 
-            // btnDelete
-            // 
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = Color.FromArgb(255, 128, 128);
-            btnDelete.DefaultCellStyle = dataGridViewCellStyle4;
-            btnDelete.HeaderText = "";
-            btnDelete.MinimumWidth = 8;
-            btnDelete.Name = "btnDelete";
-            btnDelete.ReadOnly = true;
-            btnDelete.Text = "Delete";
-            btnDelete.UseColumnTextForButtonValue = true;
-            // 
             // Transaksi
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -153,7 +125,5 @@
         private DataGridViewTextBoxColumn harga;
         private DataGridViewTextBoxColumn jumlah;
         private DataGridViewTextBoxColumn total;
-        private DataGridViewButtonColumn btnUpdate;
-        private DataGridViewButtonColumn btnDelete;
     }
 }
