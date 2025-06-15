@@ -19,6 +19,12 @@ namespace Healytics_PBO.View
 
             this.Load += Transaksi_Load;
             tbTransaksi.CellContentClick += TbTransaksi_CellContentClick;
+            this.Activated += Transaksi_Activated;
+        }
+
+        private void Transaksi_Activated(object sender, EventArgs e)
+        {
+            LoadData();
         }
 
         private void Transaksi_Load(object sender, EventArgs e)
@@ -44,30 +50,41 @@ namespace Healytics_PBO.View
 
         private void LoadData()
         {
-            var data = controller.GetAll();
+            var transaksiList = controller.GetAll();
+
+            var data = transaksiList.Select(t =>
+            {
+                var jumlah = t.DetailItems?.Sum(d => d.jumlah) ?? 0;
+                var harga = t.DetailItems?.Sum(d => d.harga) ?? 0;
+                var namaPasien = GetNamaPasienByRiwayat(t.id_riwayat);
+
+                return new
+                {
+                    t.ID,
+                    t.tanggal,
+                    nama_pasien = namaPasien,
+                    harga,
+                    jumlah,
+                    total = t.total
+                };
+            }).ToList();
+
             tbTransaksi.DataSource = null;
             tbTransaksi.Columns.Clear();
 
             tbTransaksi.AutoGenerateColumns = false;
-            tbTransaksi.Columns.Add(new DataGridViewTextBoxColumn { Name = "ID", DataPropertyName = "ID", Visible = false });
-            tbTransaksi.Columns.Add(new DataGridViewTextBoxColumn { Name = "Tanggal", HeaderText = "Tanggal", DataPropertyName = "tanggal", AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill });
-            tbTransaksi.Columns.Add(new DataGridViewTextBoxColumn { Name = "Pasien", HeaderText = "Nama Pasien", DataPropertyName = "nama_pasien", AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill });
-            tbTransaksi.Columns.Add(new DataGridViewTextBoxColumn { Name = "Harga", HeaderText = "Harga", DataPropertyName = "harga", AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells });
-            tbTransaksi.Columns.Add(new DataGridViewTextBoxColumn { Name = "Jumlah", HeaderText = "Jumlah", DataPropertyName = "jumlah", AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells });
-            tbTransaksi.Columns.Add(new DataGridViewTextBoxColumn { Name = "Total", HeaderText = "Total", DataPropertyName = "total", AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells });
-
-            var deleteButton = new DataGridViewButtonColumn
-            {
-                Name = "DeleteButton",
-                HeaderText = "Action",
-                Text = "Delete",
-                UseColumnTextForButtonValue = true
-            };
-            tbTransaksi.Columns.Add(deleteButton);
 
             tbTransaksi.DataSource = data;
 
             tbTransaksi.Height = tbTransaksi.ColumnHeadersHeight + tbTransaksi.Rows.Count * tbTransaksi.RowTemplate.Height + 10;
         }
+
+        private string GetNamaPasienByRiwayat(int id_riwayat)
+        {
+            var riwayat = new RiwayatKunjunganController().GetAll().FirstOrDefault(r => r.ID == id_riwayat);
+            return riwayat?.nama_pasien ?? "Tidak diketahui";
+        }
+
+
     }
 }

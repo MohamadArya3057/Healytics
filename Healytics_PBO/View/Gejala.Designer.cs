@@ -50,8 +50,8 @@
             tbGejala.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             tbGejala.Columns.AddRange(new DataGridViewColumn[] { ID, nama_gejala, btnUpdate, btnDelete });
             tbGejala.GridColor = Color.FromArgb(120, 195, 233);
-            tbGejala.Location = new Point(374, 142);
-            tbGejala.Margin = new Padding(2, 2, 2, 2);
+            tbGejala.Location = new Point(413, 188);
+            tbGejala.Margin = new Padding(2);
             tbGejala.MultiSelect = false;
             tbGejala.Name = "tbGejala";
             tbGejala.ReadOnly = true;
@@ -59,7 +59,7 @@
             tbGejala.RowHeadersWidth = 62;
             tbGejala.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             tbGejala.ShowRowErrors = false;
-            tbGejala.Size = new Size(776, 640);
+            tbGejala.Size = new Size(970, 800);
             tbGejala.TabIndex = 13;
             tbGejala.CellClick += tbGejala_CellClick;
             // 
@@ -108,10 +108,10 @@
             btnSearch.FlatStyle = FlatStyle.Flat;
             btnSearch.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnSearch.ForeColor = Color.SteelBlue;
-            btnSearch.Location = new Point(1054, 90);
-            btnSearch.Margin = new Padding(2, 2, 2, 2);
+            btnSearch.Location = new Point(1318, 112);
+            btnSearch.Margin = new Padding(2);
             btnSearch.Name = "btnSearch";
-            btnSearch.Size = new Size(52, 24);
+            btnSearch.Size = new Size(65, 30);
             btnSearch.TabIndex = 12;
             btnSearch.Text = "search";
             btnSearch.UseVisualStyleBackColor = true;
@@ -122,10 +122,10 @@
             txtSearch.BackColor = Color.FromArgb(120, 195, 233);
             txtSearch.BorderStyle = BorderStyle.None;
             txtSearch.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtSearch.Location = new Point(826, 90);
-            txtSearch.Margin = new Padding(2, 2, 2, 2);
+            txtSearch.Location = new Point(1032, 112);
+            txtSearch.Margin = new Padding(2);
             txtSearch.Name = "txtSearch";
-            txtSearch.Size = new Size(280, 25);
+            txtSearch.Size = new Size(350, 30);
             txtSearch.TabIndex = 11;
             // 
             // btnTambah
@@ -136,10 +136,10 @@
             btnTambah.FlatStyle = FlatStyle.Flat;
             btnTambah.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnTambah.ForeColor = Color.SteelBlue;
-            btnTambah.Location = new Point(384, 90);
-            btnTambah.Margin = new Padding(2, 2, 2, 2);
+            btnTambah.Location = new Point(413, 112);
+            btnTambah.Margin = new Padding(2);
             btnTambah.Name = "btnTambah";
-            btnTambah.Size = new Size(96, 32);
+            btnTambah.Size = new Size(120, 40);
             btnTambah.TabIndex = 10;
             btnTambah.Text = "Add Data";
             btnTambah.UseVisualStyleBackColor = false;
@@ -147,17 +147,17 @@
             // 
             // Gejala
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             BackgroundImage = Properties.Resources.bg;
-            ClientSize = new Size(1152, 819);
+            ClientSize = new Size(1440, 1024);
             Controls.Add(tbGejala);
             Controls.Add(btnSearch);
             Controls.Add(txtSearch);
             Controls.Add(btnTambah);
             FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(2, 2, 2, 2);
+            Margin = new Padding(2);
             Name = "Gejala";
             Text = "Gejala";
             Load += Gejala_Load;

@@ -40,6 +40,7 @@ namespace Healytics_PBO.View
         public TambahEditRiwayat(RiwayatKunjunganModel model, string nama_pasien, string nama_desa)
         : this(model.no_register, nama_pasien, nama_desa)
         {
+
             this.modelUpdate = model;
             this.isUpdate = true;
         }

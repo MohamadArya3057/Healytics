@@ -39,7 +39,7 @@ namespace Healytics_PBO.View
             tbObat.Rows.Clear();
             foreach (var o in data)
             {
-                tbObat.Rows.Add(o.ID, o.nama_obat, o.nama_kategori, o.stock, o.harga);
+                tbObat.Rows.Add(o.ID, o.nama_obat, o.nama_kategori, o.harga, o.stock);
             }
         }
 

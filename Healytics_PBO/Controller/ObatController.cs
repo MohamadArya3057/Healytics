@@ -30,8 +30,8 @@ namespace Healytics_PBO.Controller
                     nama_obat = reader.GetString(1),
                     id_kategori = reader.GetInt32(2),
                     nama_kategori = reader.GetString(3),
+                    harga = reader.GetDecimal(5),
                     stock = reader.GetInt32(4),
-                    harga = reader.GetDecimal(5)
                 });
             }
 
@@ -45,7 +45,7 @@ namespace Healytics_PBO.Controller
 
             NpgsqlCommand cmd = new NpgsqlCommand();
             cmd.Connection = conn;
-            cmd.CommandText = $"INSERT INTO obat(nama_obat, id_kategori, stock, harga) VALUES ('{o.nama_obat}', {o.id_kategori}, {o.stock}, {o.harga})";
+            cmd.CommandText = $"INSERT INTO obat(nama_obat, id_kategori, harga, stock) VALUES ('{o.nama_obat}', {o.id_kategori}, {o.harga}, {o.stock})";
 
             cmd.ExecuteNonQuery();
             conn.Close();
@@ -57,7 +57,7 @@ namespace Healytics_PBO.Controller
 
             NpgsqlCommand cmd = new NpgsqlCommand();
             cmd.Connection = conn;
-            cmd.CommandText = $"UPDATE obat SET nama_obat = '{o.nama_obat}', id_kategori = {o.id_kategori}, stock = {o.stock}, harga = {o.harga} WHERE id_obat = {o.ID}";
+            cmd.CommandText = $"UPDATE obat SET nama_obat = '{o.nama_obat}', id_kategori = {o.id_kategori}, harga = {o.harga}, stock = {o.stock} WHERE id_obat = {o.ID}";
 
             cmd.ExecuteNonQuery();
             conn.Close();

@@ -15,7 +15,11 @@ namespace Healytics_PBO.View
         private readonly string nama_pasien;
         private readonly string nama_desa;
 
-        public RiwayatKunjungan() => InitializeComponent();
+        public RiwayatKunjungan()
+        {
+            InitializeComponent();
+            this.dgKunjungan.CellContentClick += new DataGridViewCellEventHandler(this.dgKunjungan_CellContentClick);
+        }
 
         public RiwayatKunjungan(int no_register, string nama_pasien, string nama_desa) : this()
         {
@@ -24,6 +28,7 @@ namespace Healytics_PBO.View
             this.nama_desa = nama_desa;
             labelPasien.Text = "Nama: " + nama_pasien;
             labelDesa.Text = "Desa: " + nama_desa;
+            LoadData();
         }
 
         private void RiwayatKunjungan_Load(object sender, EventArgs e)
@@ -75,7 +80,7 @@ namespace Healytics_PBO.View
 
                 if (dgKunjungan.Columns[e.ColumnIndex].Name == "btnUpdate")
                 {
-                    var form = new TambahEditRiwayat(riwayat, nama_pasien, nama_desa);
+                    TambahEditRiwayat form = new TambahEditRiwayat(riwayat, nama_pasien, nama_desa);
                     form.MdiParent = this.MdiParent;
                     form.Dock = DockStyle.Fill;
                     form.FormClosed += (s, args) => LoadData();
@@ -83,6 +88,7 @@ namespace Healytics_PBO.View
                 }
                 else if (dgKunjungan.Columns[e.ColumnIndex].Name == "btnDelete")
                 {
+                    
                     var confirm = MessageBox.Show("Apakah yakin ingin menghapus data?", "Konfirmasi", MessageBoxButtons.YesNo);
                     if (confirm == DialogResult.Yes)
                     {

@@ -51,8 +51,10 @@
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.Desktop___7__2_;
+            BackgroundImageLayout = ImageLayout.Center;
             ClientSize = new Size(1418, 968);
             Controls.Add(button1);
+            DoubleBuffered = true;
             Name = "LandingPage";
             Text = "LandingPage";
             Load += LandingPage_Load;

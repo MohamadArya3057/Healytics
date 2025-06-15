@@ -11,7 +11,7 @@ namespace Healytics_PBO.Model
         public string nama_obat { get; set; }
         public int id_kategori { get; set; }
         public string nama_kategori { get; set; }
-        public int stock { get; set; }
         public decimal harga { get; set; }
+        public int stock { get; set; }
     }
 }

@@ -31,6 +31,12 @@
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             dgKunjungan = new DataGridView();
+            btnSearch = new Button();
+            txtSearch = new TextBox();
+            btnTambah = new Button();
+            btnKembali = new Button();
+            labelPasien = new Label();
+            labelDesa = new Label();
             ID = new DataGridViewTextBoxColumn();
             tanggal = new DataGridViewTextBoxColumn();
             catatan = new DataGridViewTextBoxColumn();
@@ -38,12 +44,6 @@
             obat_riwayat = new DataGridViewTextBoxColumn();
             btnUpdate = new DataGridViewButtonColumn();
             btnDelete = new DataGridViewButtonColumn();
-            btnSearch = new Button();
-            txtSearch = new TextBox();
-            btnTambah = new Button();
-            btnKembali = new Button();
-            labelPasien = new Label();
-            labelDesa = new Label();
             ((System.ComponentModel.ISupportInitialize)dgKunjungan).BeginInit();
             SuspendLayout();
             // 
@@ -66,66 +66,6 @@
             dgKunjungan.ShowRowErrors = false;
             dgKunjungan.Size = new Size(970, 132);
             dgKunjungan.TabIndex = 9;
-            // 
-            // ID
-            // 
-            ID.HeaderText = "ID Riwayat";
-            ID.MinimumWidth = 8;
-            ID.Name = "ID";
-            ID.ReadOnly = true;
-            ID.Visible = false;
-            // 
-            // tanggal
-            // 
-            tanggal.HeaderText = "Tanggal";
-            tanggal.MinimumWidth = 8;
-            tanggal.Name = "tanggal";
-            tanggal.ReadOnly = true;
-            // 
-            // catatan
-            // 
-            catatan.HeaderText = "Catatan";
-            catatan.MinimumWidth = 8;
-            catatan.Name = "catatan";
-            catatan.ReadOnly = true;
-            // 
-            // gejala_riwayat
-            // 
-            gejala_riwayat.HeaderText = "Gejala";
-            gejala_riwayat.MinimumWidth = 8;
-            gejala_riwayat.Name = "gejala_riwayat";
-            gejala_riwayat.ReadOnly = true;
-            // 
-            // obat_riwayat
-            // 
-            obat_riwayat.HeaderText = "Obat";
-            obat_riwayat.MinimumWidth = 8;
-            obat_riwayat.Name = "obat_riwayat";
-            obat_riwayat.ReadOnly = true;
-            // 
-            // btnUpdate
-            // 
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = Color.Khaki;
-            btnUpdate.DefaultCellStyle = dataGridViewCellStyle1;
-            btnUpdate.HeaderText = "Action";
-            btnUpdate.MinimumWidth = 8;
-            btnUpdate.Name = "btnUpdate";
-            btnUpdate.ReadOnly = true;
-            btnUpdate.Text = "Update";
-            btnUpdate.UseColumnTextForButtonValue = true;
-            // 
-            // btnDelete
-            // 
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(255, 128, 128);
-            btnDelete.DefaultCellStyle = dataGridViewCellStyle2;
-            btnDelete.HeaderText = "";
-            btnDelete.MinimumWidth = 8;
-            btnDelete.Name = "btnDelete";
-            btnDelete.ReadOnly = true;
-            btnDelete.Text = "Delete";
-            btnDelete.UseColumnTextForButtonValue = true;
             // 
             // btnSearch
             // 
@@ -205,6 +145,67 @@
             labelDesa.Size = new Size(67, 29);
             labelDesa.TabIndex = 20;
             labelDesa.Text = "Desa";
+            // 
+            // ID
+            // 
+            ID.HeaderText = "ID Riwayat";
+            ID.MinimumWidth = 8;
+            ID.Name = "ID";
+            ID.ReadOnly = true;
+            ID.Visible = false;
+            // 
+            // tanggal
+            // 
+            tanggal.HeaderText = "Tanggal";
+            tanggal.MinimumWidth = 8;
+            tanggal.Name = "tanggal";
+            tanggal.ReadOnly = true;
+            // 
+            // catatan
+            // 
+            catatan.HeaderText = "Catatan";
+            catatan.MinimumWidth = 8;
+            catatan.Name = "catatan";
+            catatan.ReadOnly = true;
+            // 
+            // gejala_riwayat
+            // 
+            gejala_riwayat.HeaderText = "Gejala";
+            gejala_riwayat.MinimumWidth = 8;
+            gejala_riwayat.Name = "gejala_riwayat";
+            gejala_riwayat.ReadOnly = true;
+            // 
+            // obat_riwayat
+            // 
+            obat_riwayat.HeaderText = "Obat";
+            obat_riwayat.MinimumWidth = 8;
+            obat_riwayat.Name = "obat_riwayat";
+            obat_riwayat.ReadOnly = true;
+            // 
+            // btnUpdate
+            // 
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = Color.Khaki;
+            btnUpdate.DefaultCellStyle = dataGridViewCellStyle1;
+            btnUpdate.HeaderText = "Action";
+            btnUpdate.MinimumWidth = 8;
+            btnUpdate.Name = "btnUpdate";
+            btnUpdate.ReadOnly = true;
+            btnUpdate.Text = "Update";
+            btnUpdate.UseColumnTextForButtonValue = true;
+            // 
+            // btnDelete
+            // 
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(255, 128, 128);
+            btnDelete.DefaultCellStyle = dataGridViewCellStyle2;
+            btnDelete.HeaderText = "";
+            btnDelete.MinimumWidth = 8;
+            btnDelete.Name = "btnDelete";
+            btnDelete.ReadOnly = true;
+            btnDelete.Resizable = DataGridViewTriState.True;
+            btnDelete.Text = "Delete";
+            btnDelete.UseColumnTextForButtonValue = true;
             // 
             // RiwayatKunjungan
             // 

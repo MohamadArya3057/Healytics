@@ -75,7 +75,9 @@ RETURNING id_riwayat";
             NpgsqlCommand cmd = new NpgsqlCommand();
             cmd.Connection = conn;
 
-            cmd.CommandText = $"UPDATE riwayat_kunjungan SET tanggal = '{r.tanggal}', no_register = '{r.no_register}', catatan = '{r.catatan}' WHERE id_riwayat = {r.ID}";
+            string tglFormatted = r.tanggal.ToString("yyyy-MM-dd HH:mm:ss");
+
+            cmd.CommandText = $"UPDATE riwayat_kunjungan SET tanggal = '{tglFormatted}', no_register = '{r.no_register}', catatan = '{r.catatan}' WHERE id_riwayat = {r.ID}";
             cmd.ExecuteNonQuery();
             conn.Close();
         }
