@@ -17,8 +17,6 @@ namespace Healytics_PBO.View
         Alat alat;
         Gejala gejala;
         Transaksi transaksi;
-        LaporanKeuangan keuangan;
-        LaporanKunjungan kunjungan;
 
         public SideBar()
         {
@@ -51,27 +49,6 @@ namespace Healytics_PBO.View
         private void Pasien_FormClosed(object? sender, FormClosedEventArgs e)
         {
             pasien = null;
-        }
-
-        private void btnKunjungan_Click(object sender, EventArgs e)
-        {
-            if (kunjungan == null)
-            {
-                kunjungan = new LaporanKunjungan();
-                kunjungan.FormClosed += Kunjungan_FormClosed;
-                kunjungan.MdiParent = this;
-                kunjungan.Dock = DockStyle.Fill;
-                kunjungan.Show();
-            }
-            else
-            {
-                kunjungan.Activate();
-            }
-        }
-
-        private void Kunjungan_FormClosed(object? sender, FormClosedEventArgs e)
-        {
-            kunjungan = null;
         }
 
         private void btnObat_Click(object sender, EventArgs e)
@@ -135,27 +112,6 @@ namespace Healytics_PBO.View
         private void Transaksi_FormClosed(object? sender, FormClosedEventArgs e)
         {
             transaksi = null;
-        }
-
-        private void btnKeuangan_Click(object sender, EventArgs e)
-        {
-            if (keuangan == null)
-            {
-                keuangan = new LaporanKeuangan();
-                keuangan.FormClosed += Keuangan_FormClosed;
-                keuangan.MdiParent = this;
-                keuangan.Dock = DockStyle.Fill;
-                keuangan.Show();
-            }
-            else
-            {
-                keuangan.Activate();
-            }
-        }
-
-        private void Keuangan_FormClosed(object? sender, FormClosedEventArgs e)
-        {
-            keuangan = null;
         }
 
         private void btnLogout_Click(object sender, EventArgs e)
