@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             dgKunjungan = new DataGridView();
             btnSearch = new Button();
             txtSearch = new TextBox();
@@ -43,7 +42,6 @@
             gejala_riwayat = new DataGridViewTextBoxColumn();
             obat_riwayat = new DataGridViewTextBoxColumn();
             btnUpdate = new DataGridViewButtonColumn();
-            btnDelete = new DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)dgKunjungan).BeginInit();
             SuspendLayout();
             // 
@@ -54,7 +52,7 @@
             dgKunjungan.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgKunjungan.BackgroundColor = Color.FromArgb(184, 237, 248);
             dgKunjungan.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgKunjungan.Columns.AddRange(new DataGridViewColumn[] { ID, tanggal, catatan, gejala_riwayat, obat_riwayat, btnUpdate, btnDelete });
+            dgKunjungan.Columns.AddRange(new DataGridViewColumn[] { ID, tanggal, catatan, gejala_riwayat, obat_riwayat, btnUpdate });
             dgKunjungan.GridColor = Color.FromArgb(120, 195, 233);
             dgKunjungan.Location = new Point(427, 288);
             dgKunjungan.MultiSelect = false;
@@ -194,19 +192,6 @@
             btnUpdate.Text = "Update";
             btnUpdate.UseColumnTextForButtonValue = true;
             // 
-            // btnDelete
-            // 
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(255, 128, 128);
-            btnDelete.DefaultCellStyle = dataGridViewCellStyle2;
-            btnDelete.HeaderText = "";
-            btnDelete.MinimumWidth = 8;
-            btnDelete.Name = "btnDelete";
-            btnDelete.ReadOnly = true;
-            btnDelete.Resizable = DataGridViewTriState.True;
-            btnDelete.Text = "Delete";
-            btnDelete.UseColumnTextForButtonValue = true;
-            // 
             // RiwayatKunjungan
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -244,6 +229,5 @@
         private DataGridViewTextBoxColumn gejala_riwayat;
         private DataGridViewTextBoxColumn obat_riwayat;
         private DataGridViewButtonColumn btnUpdate;
-        private DataGridViewButtonColumn btnDelete;
     }
 }

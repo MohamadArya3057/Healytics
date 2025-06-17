@@ -86,16 +86,6 @@ namespace Healytics_PBO.View
                     form.FormClosed += (s, args) => LoadData();
                     form.Show();
                 }
-                else if (dgKunjungan.Columns[e.ColumnIndex].Name == "btnDelete")
-                {
-                    
-                    var confirm = MessageBox.Show("Apakah yakin ingin menghapus data?", "Konfirmasi", MessageBoxButtons.YesNo);
-                    if (confirm == DialogResult.Yes)
-                    {
-                        controller.Delete(id);
-                        LoadData();
-                    }
-                }
             }
         }
 

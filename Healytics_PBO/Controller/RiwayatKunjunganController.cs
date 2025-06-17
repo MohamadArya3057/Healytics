@@ -59,9 +59,7 @@ namespace Healytics_PBO.Controller
 
             string tglFormatted = r.tanggal.ToString("yyyy-MM-dd HH:mm:ss");
 
-            cmd.CommandText = $@"INSERT INTO riwayat_kunjungan(tanggal, no_register, catatan)
-VALUES ('{tglFormatted}', {r.no_register}, '{r.catatan}')
-RETURNING id_riwayat";
+            cmd.CommandText = $@"INSERT INTO riwayat_kunjungan(tanggal, no_register, catatan) VALUES ('{tglFormatted}', {r.no_register}, '{r.catatan}') RETURNING id_riwayat";
             int id = Convert.ToInt32(cmd.ExecuteScalar());
             conn.Close();
             return id;
@@ -130,8 +128,7 @@ RETURNING id_riwayat";
                 var cmd = new NpgsqlCommand();
                 cmd.Connection = conn;
                 cmd.CommandText = @"SELECT d.id_detail_riwayat, d.id_riwayat, d.id_gejala, g.nama_gejala FROM detail_riwayat d
-JOIN gejala g ON d.id_gejala = g.id_gejala
-WHERE d.id_riwayat = @id";
+                                   JOIN gejala g ON d.id_gejala = g.id_gejala WHERE d.id_riwayat = @id";
                 cmd.Parameters.AddWithValue("@id", id_riwayat);
 
                 using (var reader = cmd.ExecuteReader())
