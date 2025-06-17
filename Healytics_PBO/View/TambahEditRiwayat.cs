@@ -157,6 +157,7 @@ namespace Healytics_PBO.View
                     id_obat = idObat,
                     jumlah = jumlah,
                     harga = obat.harga,
+                    nama_obat = obat.nama_obat,
                     catatan = ""
                 });
             }

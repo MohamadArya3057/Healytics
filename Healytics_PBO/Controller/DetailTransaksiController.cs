@@ -15,7 +15,7 @@ namespace Healytics_PBO.Controller
 
             NpgsqlCommand cmd = new NpgsqlCommand();
             cmd.Connection = conn;
-            cmd.CommandText = @"SELECT dt.id_detail_transaksi, dt.id_transaksi, dt.id_obat, o.nama_obat, dt.jumlah, o.harga, dt.catatan 
+            cmd.CommandText = @"SELECT dt.id_detail_transaksi, dt.id_transaksi, dt.id_obat, dt.nama_obat, dt.jumlah, dt.harga, dt.catatan
                                 FROM detail_transaksi dt  JOIN obat o ON dt.id_obat = o.id_obat 
                                 ORDER BY dt.id_detail_transaksi DESC";
 

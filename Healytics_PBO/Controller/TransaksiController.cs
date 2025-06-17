@@ -51,7 +51,7 @@ namespace Healytics_PBO.Controller
 
             NpgsqlCommand cmd = new NpgsqlCommand();
             cmd.Connection = conn;
-            cmd.CommandText = @"SELECT dt.id_obat, o.nama_obat, dt.jumlah, o.harga, dt.catatan FROM detail_transaksi dt JOIN obat o ON o.id_obat = dt.id_obat WHERE dt.id_transaksi = @id";
+            cmd.CommandText = @"SELECT dt.id_obat, dt.nama_obat, dt.jumlah, dt.harga, dt.catatan FROM detail_transaksi dt WHERE dt.id_transaksi = @id";
             cmd.Parameters.AddWithValue("@id", idTransaksi);
 
             NpgsqlDataReader reader = cmd.ExecuteReader();
@@ -96,9 +96,11 @@ namespace Healytics_PBO.Controller
 
             foreach (var d in item.DetailItems)
             {
-                var detailCmd = new NpgsqlCommand("INSERT INTO detail_transaksi(id_transaksi, id_obat, jumlah, catatan) VALUES (@id_transaksi, @id_obat, @jumlah, @catatan)", conn);
+                var detailCmd = new NpgsqlCommand("INSERT INTO detail_transaksi(id_transaksi, id_obat, nama_obat, harga, jumlah, catatan) VALUES (@id_transaksi, @id_obat, @nama_obat, @harga, @jumlah, @catatan)", conn);
                 detailCmd.Parameters.AddWithValue("@id_transaksi", idTransaksi);
                 detailCmd.Parameters.AddWithValue("@id_obat", d.id_obat);
+                detailCmd.Parameters.AddWithValue("@nama_obat", d.nama_obat);
+                detailCmd.Parameters.AddWithValue("@harga", d.harga);
                 detailCmd.Parameters.AddWithValue("@jumlah", d.jumlah);
                 detailCmd.Parameters.AddWithValue("@catatan", d.catatan ?? "");
                 detailCmd.ExecuteNonQuery();
